@@ -1,75 +1,63 @@
 import UIKit
 import AppFeature
 
-protocol CollectionViewCellDelegate: AnyObject {
-    func collectionView(collectionviewcell: CollectionViewCell?, index: Int, didTappedInTableViewCell: SportsTableViewCell)
+protocol SportsTableViewCellDelegate: AnyObject {
+    func collectionView(cell: SportsCollectionViewCell?, index: Int, didTappedInTableViewCell: SportsTableViewCell)
 }
 
-class SportsTableViewCell: UITableViewCell, NibBackedViewProtocol {
+final class SportsTableViewCell: UITableViewCell, NibBackedViewProtocol {
     
-    weak var cellDelegate: CollectionViewCellDelegate?
-    
-    var rowWithColors: [CollectionViewCellModel]?
-    
-    @IBOutlet var subCategoryLabel: UILabel!
+    weak var delegate: SportsTableViewCellDelegate?
+    private var data: [SportsCollectionViewCellModel]?
+
     @IBOutlet var collectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = UIColor.clear
+        selectionStyle = .none
         
-        // TODO: need to setup collection view flow layout
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.itemSize = CGSize(width: 150, height: 180)
         flowLayout.minimumLineSpacing = 2.0
         flowLayout.minimumInteritemSpacing = 5.0
-        self.collectionView.collectionViewLayout = flowLayout
-        self.collectionView.showsHorizontalScrollIndicator = false
+        collectionView.collectionViewLayout = flowLayout
+        collectionView.showsHorizontalScrollIndicator = false
         
-        // Comment if you set Datasource and delegate in .xib
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-        
-        // Register the xib for collection view cell
-        let cellNib = UINib(nibName: "CollectionViewCell", bundle: nil)
-        self.collectionView.register(cellNib, forCellWithReuseIdentifier: "collectionviewcellid")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+
+        SportsCollectionViewCell.register(for: collectionView)
     }
 }
 
 extension SportsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    // The data we passed from the TableView send them to the CollectionView Model
-    func updateCellWith(row: [CollectionViewCellModel]) {
-        self.rowWithColors = row
-        self.collectionView.reloadData()
+    func configure(with data: [SportsCollectionViewCellModel]) {
+        self.data = data
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? CollectionViewCell
-        print("I'm tapping the \(indexPath.item)")
-        self.cellDelegate?.collectionView(collectionviewcell: cell, index: indexPath.item, didTappedInTableViewCell: self)
+        let cell = collectionView.cellForItem(at: indexPath) as? SportsCollectionViewCell
+        delegate?.collectionView(cell: cell, index: indexPath.item, didTappedInTableViewCell: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.rowWithColors?.count ?? 0
+        data?.count ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    // Set the data for each cell (color and color name)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionviewcellid", for: indexPath) as? CollectionViewCell {
-            cell.colorView.backgroundColor = self.rowWithColors?[indexPath.item].color ?? UIColor.black
-            cell.nameLabel.text = self.rowWithColors?[indexPath.item].name ?? ""
-            return cell
-        }
-        return UICollectionViewCell()
+        let cell = SportsCollectionViewCell.dequeue(from: collectionView, at: indexPath)
+        cell.titleLabel.text = data?[indexPath.item].name ?? ""
+        return cell
     }
     
-    // Add spaces at the beginning and the end of the collection view
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
     }

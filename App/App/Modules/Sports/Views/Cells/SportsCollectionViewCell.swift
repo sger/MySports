@@ -1,9 +1,10 @@
 import UIKit
+import AppFeature
 
-final class CollectionViewCell: UICollectionViewCell {
+final class SportsCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol {
     
-    @IBOutlet var colorView: UIView!
-    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var titleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
