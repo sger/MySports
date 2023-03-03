@@ -5,6 +5,12 @@ public struct Sports: Codable {
     public let name: String
     public let events: [Sports.Event]
     
+    enum CodingKeys: String, CodingKey {
+        case id = "i"
+        case name = "d"
+        case events = "e"
+    }
+    
     public enum ID: String, Codable {
         case badm = "BADM"
         case bask = "BASK"
@@ -26,5 +32,13 @@ extension Sports {
         public let sportID: ID
         public let sh: String
         public let time: Int
+        
+        enum CodingKeys: String, CodingKey {
+            case name = "d"
+            case id = "i"
+            case sportID = "si"
+            case sh
+            case time = "tt"
+        }
     }
 }
