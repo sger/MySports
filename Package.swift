@@ -11,11 +11,13 @@ let package = Package(
     products: [
         .library(name: "Models", targets: ["Models"]),
         .library(name: "Networking", targets: ["Networking"]),
+        .library(name: "AppFeature", targets: ["AppFeature"]),
     ],
     dependencies: [
     ],
     targets: [
         .target(name: "Models"),
         .target(name: "Networking", dependencies: ["Models"]),
+        .target(name: "AppFeature")
     ]
 )

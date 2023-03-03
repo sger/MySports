@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5630949729B23E1D00378BE0 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 5630949629B23E1D00378BE0 /* Networking */; };
+		56E1320229B2581500F176BC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1320129B2581500F176BC /* AppCoordinator.swift */; };
+		56E1320429B2582300F176BC /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 56E1320329B2582300F176BC /* AppFeature */; };
+		56E1320629B259F000F176BC /* SportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1320529B259F000F176BC /* SportsCoordinator.swift */; };
+		56E1320829B25C4000F176BC /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1320729B25C4000F176BC /* Storyboard.swift */; };
 		56FBB59729B22ACB00310D9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FBB59629B22ACB00310D9C /* AppDelegate.swift */; };
 		56FBB59929B22ACB00310D9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FBB59829B22ACB00310D9C /* SceneDelegate.swift */; };
-		56FBB59B29B22ACB00310D9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FBB59A29B22ACB00310D9C /* ViewController.swift */; };
+		56FBB59B29B22ACB00310D9C /* SportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FBB59A29B22ACB00310D9C /* SportsViewController.swift */; };
 		56FBB59E29B22ACB00310D9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FBB59C29B22ACB00310D9C /* Main.storyboard */; };
 		56FBB5A029B22ACD00310D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FBB59F29B22ACD00310D9C /* Assets.xcassets */; };
 		56FBB5A329B22ACD00310D9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FBB5A129B22ACD00310D9C /* LaunchScreen.storyboard */; };
@@ -37,10 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		56E1320129B2581500F176BC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		56E1320529B259F000F176BC /* SportsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCoordinator.swift; sourceTree = "<group>"; };
+		56E1320729B25C4000F176BC /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		56FBB59329B22ACB00310D9C /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FBB59629B22ACB00310D9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56FBB59829B22ACB00310D9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		56FBB59A29B22ACB00310D9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		56FBB59A29B22ACB00310D9C /* SportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewController.swift; sourceTree = "<group>"; };
 		56FBB59D29B22ACB00310D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56FBB59F29B22ACD00310D9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56FBB5A229B22ACD00310D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +66,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5630949729B23E1D00378BE0 /* Networking in Frameworks */,
+				56E1320429B2582300F176BC /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +94,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		56E1320029B257FB00F176BC /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				56E1320129B2581500F176BC /* AppCoordinator.swift */,
+				56E1320529B259F000F176BC /* SportsCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		56FBB58A29B22ACB00310D9C = {
 			isa = PBXGroup;
 			children = (
@@ -111,13 +128,15 @@
 		56FBB59529B22ACB00310D9C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				56E1320029B257FB00F176BC /* Coordinators */,
 				56FBB59629B22ACB00310D9C /* AppDelegate.swift */,
 				56FBB59829B22ACB00310D9C /* SceneDelegate.swift */,
-				56FBB59A29B22ACB00310D9C /* ViewController.swift */,
+				56FBB59A29B22ACB00310D9C /* SportsViewController.swift */,
 				56FBB59C29B22ACB00310D9C /* Main.storyboard */,
 				56FBB59F29B22ACD00310D9C /* Assets.xcassets */,
 				56FBB5A129B22ACD00310D9C /* LaunchScreen.storyboard */,
 				56FBB5A429B22ACD00310D9C /* Info.plist */,
+				56E1320729B25C4000F176BC /* Storyboard.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -157,6 +176,7 @@
 			name = App;
 			packageProductDependencies = (
 				5630949629B23E1D00378BE0 /* Networking */,
+				56E1320329B2582300F176BC /* AppFeature */,
 			);
 			productName = App;
 			productReference = 56FBB59329B22ACB00310D9C /* App.app */;
@@ -273,8 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56FBB59B29B22ACB00310D9C /* ViewController.swift in Sources */,
+				56E1320629B259F000F176BC /* SportsCoordinator.swift in Sources */,
+				56E1320229B2581500F176BC /* AppCoordinator.swift in Sources */,
+				56FBB59B29B22ACB00310D9C /* SportsViewController.swift in Sources */,
 				56FBB59729B22ACB00310D9C /* AppDelegate.swift in Sources */,
+				56E1320829B25C4000F176BC /* Storyboard.swift in Sources */,
 				56FBB59929B22ACB00310D9C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,6 +639,10 @@
 		5630949629B23E1D00378BE0 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Networking;
+		};
+		56E1320329B2582300F176BC /* AppFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
