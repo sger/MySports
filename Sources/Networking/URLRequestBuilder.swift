@@ -38,6 +38,6 @@ extension URL {
 }
 
 struct Log {
-    static var APIClient = OSLog(subsystem: "DailyNews",
+    static var APIClient = OSLog(subsystem: "APIClient",
                                  category: "APIClient")
 }

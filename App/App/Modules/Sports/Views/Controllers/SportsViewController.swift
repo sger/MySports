@@ -6,7 +6,7 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet private weak var tableView: UITableView!
     
-    private var items: [TableViewCellModel] = []
+    private var data: [SportsTableViewCellModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +24,10 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
             
                 result.forEach {
                     let events = $0.events.map {
-                        CollectionViewCellModel(color: .red, name: $0.name)
+                        SportsCollectionViewCellModel(name: $0.name)
                     }
-                    let cell = TableViewCellModel(category: $0.name, items: [events], isExpanded: true)
-                    self.items.append(cell)
+                    let cell = SportsTableViewCellModel(category: $0.name, events: [events], isExpanded: true)
+                    self.data.append(cell)
                 }
                 
                 DispatchQueue.main.async {
@@ -45,7 +45,7 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
         let button = UIButton(type: .system)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .yellow
-        button.setTitle(items[section].category, for: .normal)
+        button.setTitle(data[section].category, for: .normal)
         button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
         button.tag = section
         return button
@@ -60,22 +60,21 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard items[section].isExpanded else {
+        guard data[section].isExpanded else {
             return 0
         }
             
-        return items[section].items.count
+        return data[section].events.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        items.count
+        data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SportsTableViewCell.dequeue(from: tableView, at: indexPath)
-        let rowArray = items[indexPath.section].items[indexPath.row]
-        cell.updateCellWith(row: rowArray)
-        cell.selectionStyle = .none
+        let data = data[indexPath.section].events[indexPath.row]
+        cell.configure(with: data)
         return cell
     }
     
@@ -83,15 +82,15 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
         var indexPaths = [IndexPath]()
         let section = button.tag
         
-        for row in items[section].items.indices {
+        for row in data[section].events.indices {
             let indexPath = IndexPath(row: row, section: section)
             indexPaths.append(indexPath)
         }
         
-        let isExpanded = items[section].isExpanded
-        items[section].isExpanded = !isExpanded
+        let isExpanded = data[section].isExpanded
+        data[section].isExpanded = !isExpanded
         
-        button.setTitle(isExpanded ? "Open" : "Close", for: .normal)
+//        button.setTitle(isExpanded ? "Open" : "Close", for: .normal)
         
         if isExpanded {
             tableView.deleteRows(at: indexPaths, with: .fade)
