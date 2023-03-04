@@ -3,6 +3,6 @@ import UIKit
 
 struct SportsTableViewCellModel {
     var category: String
-    var events: [[SportsCollectionViewCellModel]]
+    var events: [[EventCollectionViewCell.Event]]
     var isExpanded: Bool
 }
