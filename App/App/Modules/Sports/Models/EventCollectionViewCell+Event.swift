@@ -4,6 +4,6 @@ import UIKit
 extension EventCollectionViewCell {
     struct Event {
         var name: String
-        var time: Int
+        var time: TimeInterval
     }
 }
