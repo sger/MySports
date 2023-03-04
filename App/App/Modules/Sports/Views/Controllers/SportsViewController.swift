@@ -6,29 +6,26 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet private weak var tableView: UITableView!
     
-    private var data: [SportsTableViewCellModel] = []
+    private var sportsData: [SportsTableViewCellModel] = []
+    private var viewModel: SportsViewController.ViewModel = SportsViewController.ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Sports"
-        tableView.sectionHeaderTopPadding = 0
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = UIColor.lightGray
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = .systemRed
+        view.backgroundColor = UIColor.sportsBackgroundColor
         
-        let api = APIClient()
-        api.fetchSports { result in
+        setupTableView()
+        loadSportsData()
+    }
+    
+    private func loadSportsData() {
+        viewModel.fetchSports { result in
             switch result {
-                case .success(let result):
-            
-                result.forEach {
-                    let events = $0.events.map {
-                        SportsCollectionViewCellModel(name: $0.name)
-                    }
-                    let cell = SportsTableViewCellModel(category: $0.name, events: [events], isExpanded: true)
-                    self.data.append(cell)
-                }
+            case let .success(sportsData):
+                self.sportsData = sportsData
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -37,60 +34,60 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
                 break
             }
         }
-        
+    }
+    
+    private func setupTableView() {
+        tableView.backgroundColor = UIColor.sportsBackgroundColor
+        tableView.sectionHeaderTopPadding = 0
+        tableView.delegate = self
+        tableView.dataSource = self
         SportsTableViewCell.register(for: tableView)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let button = UIButton(type: .system)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .yellow
-        button.setTitle(data[section].category, for: .normal)
-        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
-        button.tag = section
-        return button
+        let view = SportsHeaderView.loadFromNib()
+        view.configure(with: sportsData[section].category, section: section)
+        view.delegate = self
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        34
+        50
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+        130
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard data[section].isExpanded else {
+        guard sportsData[section].isExpanded else {
             return 0
         }
             
-        return data[section].events.count
+        return sportsData[section].events.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        data.count
+        sportsData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SportsTableViewCell.dequeue(from: tableView, at: indexPath)
-        let data = data[indexPath.section].events[indexPath.row]
-        cell.configure(with: data)
+        let events = sportsData[indexPath.section].events[indexPath.row]
+        cell.configure(with: events)
         return cell
     }
     
-    @objc func handleExpandClose(button: UIButton) {
+    @objc func handleExpandClose(section: Int) {
         var indexPaths = [IndexPath]()
-        let section = button.tag
         
-        for row in data[section].events.indices {
+        for row in sportsData[section].events.indices {
             let indexPath = IndexPath(row: row, section: section)
             indexPaths.append(indexPath)
         }
         
-        let isExpanded = data[section].isExpanded
-        data[section].isExpanded = !isExpanded
-        
-//        button.setTitle(isExpanded ? "Open" : "Close", for: .normal)
+        let isExpanded = sportsData[section].isExpanded
+        sportsData[section].isExpanded = !isExpanded
         
         if isExpanded {
             tableView.deleteRows(at: indexPaths, with: .fade)
@@ -103,5 +100,11 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
 extension SportsViewController: StoryboardCreatable {
     static var storyboard: StoryboardRepresentable {
         Storyboard.main
+    }
+}
+
+extension SportsViewController: SportsHeaderViewDelegate {
+    func sportsHeaderViewDidTapActionButton(_ view: SportsHeaderView, section: Int) {
+        handleExpandClose(section: section)
     }
 }

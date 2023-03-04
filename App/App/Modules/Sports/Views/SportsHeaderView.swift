@@ -1,8 +1,47 @@
-//
-//  SportsHeaderView.swift
-//  App
-//
-//  Created by Spiros Gerokostas on 4/3/23.
-//
+import UIKit
+import AppFeature
 
-import Foundation
+protocol SportsHeaderViewDelegate: AnyObject {
+    func sportsHeaderViewDidTapActionButton(_ view: SportsHeaderView, section: Int)
+}
+
+final class SportsHeaderView: UIView, NibBackedViewProtocol {
+    
+    @IBOutlet private weak var arrowImageView: UIImageView!
+    @IBOutlet private weak var categoryLabel: UILabel!
+    
+    weak var delegate: SportsHeaderViewDelegate?
+    private var section: Int = 0
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = UIColor.sportsHeaderTextColor
+        categoryLabel.textColor = UIColor.sportsTextColor
+        arrowImageView.tintColor = UIColor.sportsTextColor
+        setupGestureRecognizer()
+        animateArrowImage()
+    }
+    
+    func configure(with value: String, section: Int) {
+        categoryLabel.text = value
+        self.section = section
+    }
+    
+    private func setupGestureRecognizer() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        addGestureRecognizer(gesture)
+    }
+    
+    @objc private func viewTapped(_ gesture: UITapGestureRecognizer) {
+        animateArrowImage()
+        delegate?.sportsHeaderViewDidTapActionButton(self, section: section)
+    }
+    
+    private func animateArrowImage() {
+        UIView.animate(withDuration: 0.5) {
+            self.arrowImageView.transform = self.arrowImageView.transform.rotated(by: 180 * CGFloat(Double.pi/180))
+        }
+    }
+}

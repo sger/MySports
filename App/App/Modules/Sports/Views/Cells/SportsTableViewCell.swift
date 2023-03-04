@@ -2,50 +2,54 @@ import UIKit
 import AppFeature
 
 protocol SportsTableViewCellDelegate: AnyObject {
-    func collectionView(cell: SportsCollectionViewCell?, index: Int, didTappedInTableViewCell: SportsTableViewCell)
+    func collectionView(cell: EventCollectionViewCell?, index: Int, didTappedInTableViewCell: SportsTableViewCell)
 }
 
 final class SportsTableViewCell: UITableViewCell, NibBackedViewProtocol {
     
     weak var delegate: SportsTableViewCellDelegate?
-    private var data: [SportsCollectionViewCellModel]?
+    private var events: [EventCollectionViewCell.Event]?
 
     @IBOutlet var collectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor.clear
+        backgroundColor = UIColor.sportsBackgroundColor
         selectionStyle = .none
         
+        setupCollectionViewFlowLayout()
+    }
+    
+    private func setupCollectionViewFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.itemSize = CGSize(width: 150, height: 180)
-        flowLayout.minimumLineSpacing = 2.0
-        flowLayout.minimumInteritemSpacing = 5.0
+        flowLayout.itemSize = CGSize(width: 140, height: 120)
+        flowLayout.minimumLineSpacing = 5.0
+        flowLayout.minimumInteritemSpacing = 0.0
+        
         collectionView.collectionViewLayout = flowLayout
         collectionView.showsHorizontalScrollIndicator = false
-        
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        SportsCollectionViewCell.register(for: collectionView)
+        EventCollectionViewCell.register(for: collectionView)
     }
 }
 
 extension SportsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func configure(with data: [SportsCollectionViewCellModel]) {
-        self.data = data
+    func configure(with events: [EventCollectionViewCell.Event]) {
+        self.events = events
         collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? SportsCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as? EventCollectionViewCell
         delegate?.collectionView(cell: cell, index: indexPath.item, didTappedInTableViewCell: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        data?.count ?? 0
+        events?.count ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -53,8 +57,9 @@ extension SportsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = SportsCollectionViewCell.dequeue(from: collectionView, at: indexPath)
-        cell.titleLabel.text = data?[indexPath.item].name ?? ""
+        let cell = EventCollectionViewCell.dequeue(from: collectionView, at: indexPath)
+        let event = events?[indexPath.item]
+        cell.configure(with: event)
         return cell
     }
     
