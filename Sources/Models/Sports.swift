@@ -31,7 +31,7 @@ extension Sports {
         public let id: String
         public let sportID: ID
         public let sh: String
-        public let time: Int
+        public let time: TimeInterval
         
         enum CodingKeys: String, CodingKey {
             case name = "d"

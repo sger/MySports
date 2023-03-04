@@ -1,7 +1,7 @@
 import Foundation
 import Models
 
-protocol SportsType {
+public protocol SportsType {
     func fetchSports(completionHandler: (@escaping (Result<[Sports], Error>) -> Void))
 }
 
