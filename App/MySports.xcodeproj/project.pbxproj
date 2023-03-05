@@ -68,7 +68,7 @@
 		56E1320D29B260F000F176BC /* EventCollectionViewCell+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCollectionViewCell+Event.swift"; sourceTree = "<group>"; };
 		56E1320F29B2613F00F176BC /* SportsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SportsListTableViewCell.xib; sourceTree = "<group>"; };
 		56E1321329B2658C00F176BC /* SportsListViewController+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SportsListViewController+List.swift"; sourceTree = "<group>"; };
-		56FBB59329B22ACB00310D9C /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56FBB59329B22ACB00310D9C /* MySports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FBB59629B22ACB00310D9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56FBB59829B22ACB00310D9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		56FBB59A29B22ACB00310D9C /* SportsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListViewController.swift; sourceTree = "<group>"; };
@@ -76,9 +76,9 @@
 		56FBB59F29B22ACD00310D9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56FBB5A229B22ACD00310D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56FBB5A429B22ACD00310D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56FBB5A929B22ACD00310D9C /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56FBB5A929B22ACD00310D9C /* MySportsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySportsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FBB5AD29B22ACD00310D9C /* AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
-		56FBB5B329B22ACD00310D9C /* AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56FBB5B329B22ACD00310D9C /* MySportsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySportsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FBB5B729B22ACD00310D9C /* AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITests.swift; sourceTree = "<group>"; };
 		56FBB5B929B22ACD00310D9C /* AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		56FBB5C629B22BF600310D9C /* Sports */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Sports; path = ..; sourceTree = "<group>"; };
@@ -233,9 +233,9 @@
 			isa = PBXGroup;
 			children = (
 				56FBB5C629B22BF600310D9C /* Sports */,
-				56FBB59529B22ACB00310D9C /* App */,
-				56FBB5AC29B22ACD00310D9C /* AppTests */,
-				56FBB5B629B22ACD00310D9C /* AppUITests */,
+				56FBB59529B22ACB00310D9C /* Sources */,
+				56FBB5AC29B22ACD00310D9C /* Tests */,
+				56FBB5B629B22ACD00310D9C /* UITests */,
 				56FBB59429B22ACB00310D9C /* Products */,
 				5630949529B23E1D00378BE0 /* Frameworks */,
 			);
@@ -244,14 +244,14 @@
 		56FBB59429B22ACB00310D9C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56FBB59329B22ACB00310D9C /* App.app */,
-				56FBB5A929B22ACD00310D9C /* AppTests.xctest */,
-				56FBB5B329B22ACD00310D9C /* AppUITests.xctest */,
+				56FBB59329B22ACB00310D9C /* MySports.app */,
+				56FBB5A929B22ACD00310D9C /* MySportsTests.xctest */,
+				56FBB5B329B22ACD00310D9C /* MySportsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		56FBB59529B22ACB00310D9C /* App */ = {
+		56FBB59529B22ACB00310D9C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				56E1321C29B26EC300F176BC /* Storyboards */,
@@ -262,32 +262,32 @@
 				56FBB59F29B22ACD00310D9C /* Assets.xcassets */,
 				56FBB5A429B22ACD00310D9C /* Info.plist */,
 			);
-			path = App;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		56FBB5AC29B22ACD00310D9C /* AppTests */ = {
+		56FBB5AC29B22ACD00310D9C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				56FBB5AD29B22ACD00310D9C /* AppTests.swift */,
 			);
-			path = AppTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		56FBB5B629B22ACD00310D9C /* AppUITests */ = {
+		56FBB5B629B22ACD00310D9C /* UITests */ = {
 			isa = PBXGroup;
 			children = (
 				56FBB5B729B22ACD00310D9C /* AppUITests.swift */,
 				56FBB5B929B22ACD00310D9C /* AppUITestsLaunchTests.swift */,
 			);
-			path = AppUITests;
+			path = UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		56FBB59229B22ACB00310D9C /* App */ = {
+		56FBB59229B22ACB00310D9C /* MySports */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56FBB5BD29B22ACD00310D9C /* Build configuration list for PBXNativeTarget "App" */;
+			buildConfigurationList = 56FBB5BD29B22ACD00310D9C /* Build configuration list for PBXNativeTarget "MySports" */;
 			buildPhases = (
 				56FBB58F29B22ACB00310D9C /* Sources */,
 				56FBB59029B22ACB00310D9C /* Frameworks */,
@@ -297,18 +297,18 @@
 			);
 			dependencies = (
 			);
-			name = App;
+			name = MySports;
 			packageProductDependencies = (
 				5630949629B23E1D00378BE0 /* Networking */,
 				56E1320329B2582300F176BC /* AppFeature */,
 			);
 			productName = App;
-			productReference = 56FBB59329B22ACB00310D9C /* App.app */;
+			productReference = 56FBB59329B22ACB00310D9C /* MySports.app */;
 			productType = "com.apple.product-type.application";
 		};
-		56FBB5A829B22ACD00310D9C /* AppTests */ = {
+		56FBB5A829B22ACD00310D9C /* MySportsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56FBB5C029B22ACD00310D9C /* Build configuration list for PBXNativeTarget "AppTests" */;
+			buildConfigurationList = 56FBB5C029B22ACD00310D9C /* Build configuration list for PBXNativeTarget "MySportsTests" */;
 			buildPhases = (
 				56FBB5A529B22ACD00310D9C /* Sources */,
 				56FBB5A629B22ACD00310D9C /* Frameworks */,
@@ -319,14 +319,14 @@
 			dependencies = (
 				56FBB5AB29B22ACD00310D9C /* PBXTargetDependency */,
 			);
-			name = AppTests;
+			name = MySportsTests;
 			productName = AppTests;
-			productReference = 56FBB5A929B22ACD00310D9C /* AppTests.xctest */;
+			productReference = 56FBB5A929B22ACD00310D9C /* MySportsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		56FBB5B229B22ACD00310D9C /* AppUITests */ = {
+		56FBB5B229B22ACD00310D9C /* MySportsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56FBB5C329B22ACD00310D9C /* Build configuration list for PBXNativeTarget "AppUITests" */;
+			buildConfigurationList = 56FBB5C329B22ACD00310D9C /* Build configuration list for PBXNativeTarget "MySportsUITests" */;
 			buildPhases = (
 				56FBB5AF29B22ACD00310D9C /* Sources */,
 				56FBB5B029B22ACD00310D9C /* Frameworks */,
@@ -337,9 +337,9 @@
 			dependencies = (
 				56FBB5B529B22ACD00310D9C /* PBXTargetDependency */,
 			);
-			name = AppUITests;
+			name = MySportsUITests;
 			productName = AppUITests;
-			productReference = 56FBB5B329B22ACD00310D9C /* AppUITests.xctest */;
+			productReference = 56FBB5B329B22ACD00310D9C /* MySportsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -365,7 +365,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 56FBB58E29B22ACB00310D9C /* Build configuration list for PBXProject "App" */;
+			buildConfigurationList = 56FBB58E29B22ACB00310D9C /* Build configuration list for PBXProject "MySports" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -378,9 +378,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56FBB59229B22ACB00310D9C /* App */,
-				56FBB5A829B22ACD00310D9C /* AppTests */,
-				56FBB5B229B22ACD00310D9C /* AppUITests */,
+				56FBB59229B22ACB00310D9C /* MySports */,
+				56FBB5A829B22ACD00310D9C /* MySportsTests */,
+				56FBB5B229B22ACD00310D9C /* MySportsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -460,12 +460,12 @@
 /* Begin PBXTargetDependency section */
 		56FBB5AB29B22ACD00310D9C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56FBB59229B22ACB00310D9C /* App */;
+			target = 56FBB59229B22ACB00310D9C /* MySports */;
 			targetProxy = 56FBB5AA29B22ACD00310D9C /* PBXContainerItemProxy */;
 		};
 		56FBB5B529B22ACD00310D9C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56FBB59229B22ACB00310D9C /* App */;
+			target = 56FBB59229B22ACB00310D9C /* MySports */;
 			targetProxy = 56FBB5B429B22ACD00310D9C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -612,7 +612,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -641,7 +641,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -677,7 +677,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/App";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySports.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MySports";
 			};
 			name = Debug;
 		};
@@ -696,7 +696,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/App";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySports.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MySports";
 			};
 			name = Release;
 		};
@@ -737,7 +737,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		56FBB58E29B22ACB00310D9C /* Build configuration list for PBXProject "App" */ = {
+		56FBB58E29B22ACB00310D9C /* Build configuration list for PBXProject "MySports" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56FBB5BB29B22ACD00310D9C /* Debug */,
@@ -746,7 +746,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56FBB5BD29B22ACD00310D9C /* Build configuration list for PBXNativeTarget "App" */ = {
+		56FBB5BD29B22ACD00310D9C /* Build configuration list for PBXNativeTarget "MySports" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56FBB5BE29B22ACD00310D9C /* Debug */,
@@ -755,7 +755,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56FBB5C029B22ACD00310D9C /* Build configuration list for PBXNativeTarget "AppTests" */ = {
+		56FBB5C029B22ACD00310D9C /* Build configuration list for PBXNativeTarget "MySportsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56FBB5C129B22ACD00310D9C /* Debug */,
@@ -764,7 +764,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56FBB5C329B22ACD00310D9C /* Build configuration list for PBXNativeTarget "AppUITests" */ = {
+		56FBB5C329B22ACD00310D9C /* Build configuration list for PBXNativeTarget "MySportsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56FBB5C429B22ACD00310D9C /* Debug */,
