@@ -62,11 +62,6 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         }
     }
     
-    func test() {
-        fillFavoriteImageView.isHidden = false
-        favoriteImageView.isHidden = true
-    }
-    
     func updateUI(with value: String) {
         infoLabel.isHidden = false
         infoLabel.text = value
