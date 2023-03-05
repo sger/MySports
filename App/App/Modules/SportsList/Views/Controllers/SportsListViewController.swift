@@ -47,7 +47,7 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = SportsHeaderView.loadFromNib()
-        view.configure(with: list[section].categoryName, section: section)
+        view.configure(with: list[section].categoryName, section: section, image: list[section].categoryImage)
         view.delegate = self
         return view
     }

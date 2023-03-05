@@ -22,6 +22,31 @@ public struct SportsDTO: Codable {
         case tabl = "TABL"
         case tenn = "TENN"
         case voll = "VOLL"
+        
+        public var image: String {
+            switch self {
+            case .badm:
+                return "badminton"
+            case .bask:
+                return "basketball"
+            case .esps:
+                return "esports"
+            case .foot:
+                return "football"
+            case .hand:
+                return "handball"
+            case .iceh:
+                return "ice-hockey"
+            case .snoo:
+                return "pool"
+            case .tabl:
+                return "table-tennis"
+            case .tenn:
+                return "tennis"
+            case .voll:
+                return "volleyball"
+            }
+        }
     }
 }
 

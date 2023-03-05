@@ -9,6 +9,7 @@ final class SportsHeaderView: UIView, NibBackedViewProtocol {
     
     @IBOutlet private weak var arrowImageView: UIImageView!
     @IBOutlet private weak var categoryLabel: UILabel!
+    @IBOutlet private weak var categoryImageView: UIImageView!
     
     weak var delegate: SportsHeaderViewDelegate?
     private var section: Int = 0
@@ -22,8 +23,9 @@ final class SportsHeaderView: UIView, NibBackedViewProtocol {
         animateArrowImage()
     }
     
-    func configure(with value: String, section: Int) {
+    func configure(with value: String, section: Int, image: String) {
         categoryLabel.text = value
+        categoryImageView.image = UIImage(named: image)
         self.section = section
     }
     

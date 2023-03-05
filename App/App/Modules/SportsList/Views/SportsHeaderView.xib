@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVm-fE-XBP">
-                    <rect key="frame" x="25.999999999999996" y="29.666666666666671" width="44.666666666666657" height="20"/>
+                    <rect key="frame" x="36" y="29.333333333333336" width="44.666666666666657" height="20.333333333333336"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -27,18 +27,28 @@
                         <constraint firstAttribute="width" constant="20" id="sIJ-bt-xuG"/>
                     </constraints>
                 </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="football" translatesAutoresizingMaskIntoConstraints="NO" id="zw3-yS-b6X">
+                    <rect key="frame" x="8" y="29.666666666666671" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Vp8-GT-q5c"/>
+                        <constraint firstAttribute="height" constant="20" id="vKZ-aI-bDb"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="DWU-mF-JZ1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="OER-HQ-oPw"/>
-                <constraint firstItem="jVm-fE-XBP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="10" id="k4r-It-W68"/>
+                <constraint firstItem="zw3-yS-b6X" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="WFe-HP-GXN"/>
+                <constraint firstItem="zw3-yS-b6X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="ZAw-eh-K9f"/>
+                <constraint firstItem="jVm-fE-XBP" firstAttribute="leading" secondItem="zw3-yS-b6X" secondAttribute="trailing" constant="8" symbolic="YES" id="neI-bo-EZt"/>
                 <constraint firstItem="jVm-fE-XBP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="tyk-hI-XX7"/>
                 <constraint firstAttribute="trailing" secondItem="DWU-mF-JZ1" secondAttribute="trailing" constant="26" id="xlv-Yd-wnJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="arrowImageView" destination="DWU-mF-JZ1" id="DHU-LT-Loz"/>
+                <outlet property="categoryImageView" destination="zw3-yS-b6X" id="QGT-jE-yxj"/>
                 <outlet property="categoryLabel" destination="jVm-fE-XBP" id="lqB-vt-xuS"/>
             </connections>
             <point key="canvasLocation" x="26.717557251908396" y="-251.7605633802817"/>
@@ -46,5 +56,6 @@
     </objects>
     <resources>
         <image name="arrow_down_icon" width="12" height="7"/>
+        <image name="football" width="512" height="512"/>
     </resources>
 </document>
