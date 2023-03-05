@@ -1,9 +1,9 @@
 import Foundation
 
-public struct Sports: Codable {
+public struct SportsDTO: Codable {
     public let id: ID
     public let name: String
-    public let events: [Sports.Event]
+    public let events: [SportsDTO.EventDTO]
     
     enum CodingKeys: String, CodingKey {
         case id = "i"
@@ -25,8 +25,8 @@ public struct Sports: Codable {
     }
 }
 
-extension Sports {
-    public struct Event: Codable {
+extension SportsDTO {
+    public struct EventDTO: Codable {
         public let name: String
         public let id: String
         public let sportID: ID
