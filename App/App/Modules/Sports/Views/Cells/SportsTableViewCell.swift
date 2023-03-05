@@ -3,12 +3,16 @@ import AppFeature
 
 protocol SportsTableViewCellDelegate: AnyObject {
     func collectionView(cell: EventCollectionViewCell?, index: Int, didTappedInTableViewCell: SportsTableViewCell)
+    func update(cell: EventCollectionViewCell?, sportsData: [SportsTableViewCellModel])
+    func updateOrderEvents(cell: EventCollectionViewCell?, section: Int, events: [[EventCollectionViewCell.Event]])
 }
 
 final class SportsTableViewCell: UITableViewCell, NibBackedViewProtocol {
     
     weak var delegate: SportsTableViewCellDelegate?
     private var events: [EventCollectionViewCell.Event] = []
+    private var sportsData: [SportsTableViewCellModel] = []
+    public var section: Int = 0
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -38,22 +42,42 @@ final class SportsTableViewCell: UITableViewCell, NibBackedViewProtocol {
 
 extension SportsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func configure(with events: [EventCollectionViewCell.Event]) {
+    func configure(with events: [EventCollectionViewCell.Event], sportsData: [SportsTableViewCellModel], section: Int) {
         self.events = events
+        self.sportsData = sportsData
+        self.section = section
         collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? EventCollectionViewCell
         delegate?.collectionView(cell: cell, index: indexPath.item, didTappedInTableViewCell: self)
-
-        events[indexPath.item].isFavorite = true
-        print("favorite: \(events[indexPath.item])")
         
-        events = events.sorted(by:{ $0.isFavorite && !$1.isFavorite})
-
-        print(events)
+        events[indexPath.item].isFavorite = true
+        print("favorite: \(events[indexPath.item].name)")
+    
+        let row = events[indexPath.item]
+        events.remove(at: indexPath.item)
+        events.insert(row, at: 0)
         collectionView.reloadData()
+        
+        print("section \(section)")
+        
+//        sportsData[section].events = [events]
+//        
+//        for event in sportsData[section].events {
+//            for row in event {
+//                print("\(row.name) -> \(row.isFavorite)")
+//            }
+//        }
+//        
+//        print(sportsData[section].events.indices)
+//        
+//        print("----------")
+        
+//        delegate?.update(cell: cell, sportsData: sportsData)
+        
+        delegate?.updateOrderEvents(cell: cell, section: section, events: [events])
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

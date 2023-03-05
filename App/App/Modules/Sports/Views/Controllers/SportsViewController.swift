@@ -73,13 +73,24 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SportsTableViewCell.dequeue(from: tableView, at: indexPath)
-        let events = sportsData[indexPath.section].events[indexPath.row].sorted(by: { $0.isFavorite && !$1.isFavorite })
-        cell.configure(with: events)
+        let events = sportsData[indexPath.section].events[indexPath.row]
+        cell.configure(with: events, sportsData: sportsData, section: indexPath.section)
+        cell.delegate = self
         return cell
     }
     
     @objc func handleExpandClose(section: Int) {
         var indexPaths = [IndexPath]()
+        
+        print("handleExpandClose")
+        
+        for event in sportsData[section].events {
+            for row in event {
+                print("\(row.name) -> \(row.isFavorite)")
+            }
+        }
+        
+        print(sportsData[section].events.indices)
         
         for row in sportsData[section].events.indices {
             let indexPath = IndexPath(row: row, section: section)
@@ -107,4 +118,30 @@ extension SportsViewController: SportsHeaderViewDelegate {
     func sportsHeaderViewDidTapActionButton(_ view: SportsHeaderView, section: Int) {
         handleExpandClose(section: section)
     }
+}
+
+extension SportsViewController: SportsTableViewCellDelegate {
+    func updateOrderEvents(cell: EventCollectionViewCell?, section: Int, events: [[EventCollectionViewCell.Event]]) {
+        sportsData[section].events = events
+        
+        for event in sportsData[section].events {
+            for row in event {
+                print("\(row.name) -> \(row.isFavorite)")
+            }
+        }
+        
+        print(sportsData[section].events.indices)
+        
+        print("----------")
+    }
+    
+    func collectionView(cell: EventCollectionViewCell?, index: Int, didTappedInTableViewCell: SportsTableViewCell) {
+        
+    }
+    
+    func update(cell: EventCollectionViewCell?, sportsData: [SportsTableViewCellModel]) {
+        self.sportsData = sportsData
+    }
+    
+    
 }
