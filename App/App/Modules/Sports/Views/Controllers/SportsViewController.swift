@@ -73,7 +73,7 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SportsTableViewCell.dequeue(from: tableView, at: indexPath)
-        let events = sportsData[indexPath.section].events[indexPath.row]
+        let events = sportsData[indexPath.section].events[indexPath.row].sorted(by: { $0.isFavorite && !$1.isFavorite })
         cell.configure(with: events)
         return cell
     }
