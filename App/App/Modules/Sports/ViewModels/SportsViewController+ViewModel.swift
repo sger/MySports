@@ -1,7 +1,7 @@
 import Foundation
 import Networking
 
-extension SportsViewController {
+extension SportsListViewController {
     final class ViewModel {
         private let apiClient: SportsType
         private var sportsData: [SportsTableViewCellModel] = []

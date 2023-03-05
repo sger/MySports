@@ -2,12 +2,12 @@ import UIKit
 import AppFeature
 import Networking
 
-final class SportsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class SportsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet private weak var tableView: UITableView!
     
     private var sportsData: [SportsTableViewCellModel] = []
-    private var viewModel: SportsViewController.ViewModel = SportsViewController.ViewModel()
+    private var viewModel: SportsListViewController.ViewModel = SportsListViewController.ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,19 +108,19 @@ final class SportsViewController: UIViewController, UITableViewDelegate, UITable
     }
 }
 
-extension SportsViewController: StoryboardCreatable {
+extension SportsListViewController: StoryboardCreatable {
     static var storyboard: StoryboardRepresentable {
         Storyboard.main
     }
 }
 
-extension SportsViewController: SportsHeaderViewDelegate {
+extension SportsListViewController: SportsHeaderViewDelegate {
     func sportsHeaderViewDidTapActionButton(_ view: SportsHeaderView, section: Int) {
         handleExpandClose(section: section)
     }
 }
 
-extension SportsViewController: SportsTableViewCellDelegate {
+extension SportsListViewController: SportsTableViewCellDelegate {
     func updateOrderEvents(cell: EventCollectionViewCell?, section: Int, events: [[EventCollectionViewCell.Event]]) {
         sportsData[section].events = events
         

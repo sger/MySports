@@ -3,14 +3,14 @@ import AppFeature
 
 final class SportsCoordinator: BaseCoordinator {
     private let router: Router
-    private var sportsViewController: SportsViewController?
+    private var sportsViewController: SportsListViewController?
 
     init(router: Router) {
         self.router = router
     }
 
     override func start() {
-        let sportsViewController = SportsViewController.create()
+        let sportsViewController = SportsListViewController.create()
         
         router.push(sportsViewController, animated: false)
         self.sportsViewController = sportsViewController
