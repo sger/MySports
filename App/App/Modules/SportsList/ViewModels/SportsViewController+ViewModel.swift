@@ -4,13 +4,13 @@ import Networking
 extension SportsListViewController {
     final class ViewModel {
         private let apiClient: SportsType
-        private var sportsData: [SportsTableViewCellModel] = []
+        private var sportsData: [SportsListViewController.List] = []
         
         init(apiClient: SportsType = APIClient()) {
             self.apiClient = apiClient
         }
         
-        func fetchSports(completion: @escaping (Result<[SportsTableViewCellModel], Error>) -> Void) {
+        func fetchSports(completion: @escaping (Result<[SportsListViewController.List], Error>) -> Void) {
             apiClient.fetchSports { result in
                 switch result {
                 case let .success(response):
@@ -18,7 +18,7 @@ extension SportsListViewController {
                         let events = $0.events.map {
                             EventCollectionViewCell.Event(name: $0.name, time: $0.time, isFavorite: false)
                         }
-                        let cell = SportsTableViewCellModel(category: $0.name, events: [events], isExpanded: true)
+                        let cell = SportsListViewController.List(categoryName: $0.name, events: [events], isExpanded: true)
                         self.sportsData.append(cell)
                     }
                     

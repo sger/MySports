@@ -1,7 +1,7 @@
 import Foundation
 import AppFeature
 
-final class SportsCoordinator: BaseCoordinator {
+final class SportsListCoordinator: BaseCoordinator {
     private let router: Router
     private var sportsViewController: SportsListViewController?
 

@@ -1,18 +1,15 @@
 import UIKit
 import AppFeature
 
-protocol SportsTableViewCellDelegate: AnyObject {
-    func collectionView(cell: EventCollectionViewCell?, index: Int, didTappedInTableViewCell: SportsTableViewCell)
-    func update(cell: EventCollectionViewCell?, sportsData: [SportsTableViewCellModel])
-    func updateOrderEvents(cell: EventCollectionViewCell?, section: Int, events: [[EventCollectionViewCell.Event]])
+protocol SportsListTableViewCellDelegate: AnyObject {
+    func sportsListTableViewCellDidUpdateEventsOrder(cell: EventCollectionViewCell?, section: Int, events: [[EventCollectionViewCell.Event]])
 }
 
-final class SportsTableViewCell: UITableViewCell, NibBackedViewProtocol {
+final class SportsListTableViewCell: UITableViewCell, NibBackedViewProtocol {
     
-    weak var delegate: SportsTableViewCellDelegate?
+    weak var delegate: SportsListTableViewCellDelegate?
     private var events: [EventCollectionViewCell.Event] = []
-    private var sportsData: [SportsTableViewCellModel] = []
-    public var section: Int = 0
+    private var section: Int = 0
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -40,44 +37,25 @@ final class SportsTableViewCell: UITableViewCell, NibBackedViewProtocol {
     }
 }
 
-extension SportsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SportsListTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func configure(with events: [EventCollectionViewCell.Event], sportsData: [SportsTableViewCellModel], section: Int) {
+    func configure(with events: [EventCollectionViewCell.Event], section: Int) {
         self.events = events
-        self.sportsData = sportsData
         self.section = section
         collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? EventCollectionViewCell
-        delegate?.collectionView(cell: cell, index: indexPath.item, didTappedInTableViewCell: self)
         
         events[indexPath.item].isFavorite = true
-        print("favorite: \(events[indexPath.item].name)")
     
-        let row = events[indexPath.item]
+        let event = events[indexPath.item]
         events.remove(at: indexPath.item)
-        events.insert(row, at: 0)
+        events.insert(event, at: 0)
         collectionView.reloadData()
         
-        print("section \(section)")
-        
-//        sportsData[section].events = [events]
-//        
-//        for event in sportsData[section].events {
-//            for row in event {
-//                print("\(row.name) -> \(row.isFavorite)")
-//            }
-//        }
-//        
-//        print(sportsData[section].events.indices)
-//        
-//        print("----------")
-        
-//        delegate?.update(cell: cell, sportsData: sportsData)
-        
-        delegate?.updateOrderEvents(cell: cell, section: section, events: [events])
+        delegate?.sportsListTableViewCellDidUpdateEventsOrder(cell: cell, section: section, events: [events])
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -96,7 +74,7 @@ extension SportsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 

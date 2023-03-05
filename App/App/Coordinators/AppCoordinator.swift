@@ -6,14 +6,14 @@ final class AppCoordinator: BaseCoordinator {
 
     private let window: UIWindow
     private let rootViewController: UINavigationController
-    private let sportsCoordinator: SportsCoordinator
+    private let sportsCoordinator: SportsListCoordinator
 
     init(window: UIWindow) {
         self.window = window
         self.rootViewController = UINavigationController()
 
         let navigationRouter = NavigationRouter(navigationController: rootViewController)
-        sportsCoordinator = SportsCoordinator(router: navigationRouter)
+        sportsCoordinator = SportsListCoordinator(router: navigationRouter)
     }
 
     override func start() {
