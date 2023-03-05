@@ -8,8 +8,8 @@ protocol SportsTableViewCellDelegate: AnyObject {
 final class SportsTableViewCell: UITableViewCell, NibBackedViewProtocol {
     
     weak var delegate: SportsTableViewCellDelegate?
-    private var events: [EventCollectionViewCell.Event]?
-
+    private var events: [EventCollectionViewCell.Event] = []
+    
     @IBOutlet var collectionView: UICollectionView!
     
     override func awakeFromNib() {
@@ -46,10 +46,18 @@ extension SportsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? EventCollectionViewCell
         delegate?.collectionView(cell: cell, index: indexPath.item, didTappedInTableViewCell: self)
+
+        events[indexPath.item].isFavorite = true
+        print("favorite: \(events[indexPath.item])")
+        
+        events = events.sorted(by:{ $0.isFavorite && !$1.isFavorite})
+
+        print(events)
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        events?.count ?? 0
+        events.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -58,7 +66,7 @@ extension SportsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = EventCollectionViewCell.dequeue(from: collectionView, at: indexPath)
-        let event = events?[indexPath.item]
+        let event = events[indexPath.item]
         cell.configure(with: event)
         return cell
     }

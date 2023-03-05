@@ -39,19 +39,29 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-2" translatesAutoresizingMaskIntoConstraints="NO" id="o4h-O0-ydE">
+                    <rect key="frame" x="54" y="39.333333333333336" width="42" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="yxu-Ii-2OW"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="BE8-Tl-LQn" firstAttribute="top" secondItem="o4h-O0-ydE" secondAttribute="bottom" constant="10" id="FC6-78-tFv"/>
+                <constraint firstItem="o4h-O0-ydE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="54" id="FhL-2Z-QpF"/>
                 <constraint firstAttribute="trailing" secondItem="LYI-ON-kC4" secondAttribute="trailing" constant="20" id="HOj-ym-v3q"/>
                 <constraint firstAttribute="trailing" secondItem="HqW-bH-fkU" secondAttribute="trailing" constant="10" id="MnO-ro-udz"/>
                 <constraint firstItem="LYI-ON-kC4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="OZm-OE-cLF"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fQN-0N-Yqv" secondAttribute="trailing" constant="54" id="Toi-X5-4cb"/>
+                <constraint firstItem="o4h-O0-ydE" firstAttribute="top" secondItem="LYI-ON-kC4" secondAttribute="bottom" constant="10" id="VTi-1g-qSt"/>
                 <constraint firstItem="LYI-ON-kC4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="YbC-J7-yCb"/>
                 <constraint firstItem="HqW-bH-fkU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="aOr-X9-ap1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BE8-Tl-LQn" secondAttribute="trailing" constant="10" id="adY-Xf-ySu"/>
                 <constraint firstItem="BE8-Tl-LQn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="eQm-bu-4rQ"/>
                 <constraint firstItem="fQN-0N-Yqv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="54" id="hbV-0z-XWs"/>
+                <constraint firstAttribute="trailing" secondItem="o4h-O0-ydE" secondAttribute="trailing" constant="54" id="ldy-F7-RYy"/>
                 <constraint firstItem="HqW-bH-fkU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="oQ1-5t-QxN"/>
                 <constraint firstItem="BE8-Tl-LQn" firstAttribute="top" secondItem="fQN-0N-Yqv" secondAttribute="bottom" constant="10" id="pAK-qa-dIr"/>
                 <constraint firstItem="fQN-0N-Yqv" firstAttribute="top" secondItem="HqW-bH-fkU" secondAttribute="bottom" constant="10" id="wwc-Ss-uqL"/>
@@ -59,15 +69,18 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="favoriteImageView" destination="fQN-0N-Yqv" id="YDE-Lx-Tee"/>
+                <outlet property="fillFavoriteImageView" destination="o4h-O0-ydE" id="QuN-gs-tK7"/>
                 <outlet property="infoLabel" destination="HqW-bH-fkU" id="TnH-Vf-rbr"/>
                 <outlet property="timeLabel" destination="LYI-ON-kC4" id="8sg-Zf-Rvv"/>
                 <outlet property="titleLabel" destination="BE8-Tl-LQn" id="hEX-Qk-Q0Z"/>
             </connections>
-            <point key="canvasLocation" x="4.5801526717557248" y="-213.73239436619718"/>
+            <point key="canvasLocation" x="4.5801526717557248" y="-214.08450704225353"/>
         </view>
     </objects>
     <resources>
         <image name="star" width="512" height="512"/>
+        <image name="star-2" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

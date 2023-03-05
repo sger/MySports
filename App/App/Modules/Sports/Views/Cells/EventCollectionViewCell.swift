@@ -8,6 +8,8 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var infoLabel: UILabel!
+    @IBOutlet private weak var favoriteImageView: UIImageView!
+    @IBOutlet private weak var fillFavoriteImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +27,9 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         timeLabel.layer.cornerRadius = 6
         timeLabel.layer.borderColor = UIColor.sportsTextColor.cgColor
         timeLabel.layer.borderWidth = 1.0
+        
+        favoriteImageView.tintColor = UIColor.sportsTextColor
+        fillFavoriteImageView.isHidden = true
     }
     
     func configure(with event: Event?) {
@@ -33,6 +38,14 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         }
         
         titleLabel.text = event.name
+        
+        if event.isFavorite {
+            fillFavoriteImageView.isHidden = false
+            favoriteImageView.isHidden = true
+        } else {
+            fillFavoriteImageView.isHidden = true
+            favoriteImageView.isHidden = false
+        }
             
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             
@@ -47,6 +60,11 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
             self.updateUI(with: self.countdownTime(from: secondsLeftUntilEvent))
 
         }
+    }
+    
+    func test() {
+        fillFavoriteImageView.isHidden = false
+        favoriteImageView.isHidden = true
     }
     
     func updateUI(with value: String) {
