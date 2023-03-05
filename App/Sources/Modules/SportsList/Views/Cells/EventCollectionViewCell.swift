@@ -50,7 +50,7 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             
             let currentUnixTime = Date().timeIntervalSince1970
-            let secondsLeftUntilEvent = 1678034692 - currentUnixTime //event.time
+            let secondsLeftUntilEvent = 1678116087 - currentUnixTime //event.time
             
             if secondsLeftUntilEvent < 0 {
                 self.updateUI(with: "Event ended")

@@ -16,6 +16,9 @@
 		5630A35029B3CC760038AB20 /* SportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5630A34F29B3CC760038AB20 /* SportsHeaderView.xib */; };
 		5630A35229B3CC800038AB20 /* SportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630A35129B3CC800038AB20 /* SportsHeaderView.swift */; };
 		5678AFBA29B4EC960069550F /* SportsListMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AFB929B4EC960069550F /* SportsListMapper.swift */; };
+		5678AFC229B500280069550F /* SportsViewControllerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AFC129B500280069550F /* SportsViewControllerViewModelTests.swift */; };
+		5678AFC529B500700069550F /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AFC329B5005E0069550F /* TestUtilities.swift */; };
+		5678AFC929B503700069550F /* my_sports.json in Resources */ = {isa = PBXBuildFile; fileRef = 5678AFBF29B4FFF40069550F /* my_sports.json */; };
 		56E1320229B2581500F176BC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1320129B2581500F176BC /* AppCoordinator.swift */; };
 		56E1320429B2582300F176BC /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 56E1320329B2582300F176BC /* AppFeature */; };
 		56E1320629B259F000F176BC /* SportsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1320529B259F000F176BC /* SportsListCoordinator.swift */; };
@@ -61,6 +64,9 @@
 		5630A34F29B3CC760038AB20 /* SportsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SportsHeaderView.xib; sourceTree = "<group>"; };
 		5630A35129B3CC800038AB20 /* SportsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsHeaderView.swift; sourceTree = "<group>"; };
 		5678AFB929B4EC960069550F /* SportsListMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListMapper.swift; sourceTree = "<group>"; };
+		5678AFBF29B4FFF40069550F /* my_sports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_sports.json; sourceTree = "<group>"; };
+		5678AFC129B500280069550F /* SportsViewControllerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewControllerViewModelTests.swift; sourceTree = "<group>"; };
+		5678AFC329B5005E0069550F /* TestUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtilities.swift; sourceTree = "<group>"; };
 		56E1320129B2581500F176BC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		56E1320529B259F000F176BC /* SportsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListCoordinator.swift; sourceTree = "<group>"; };
 		56E1320729B25C4000F176BC /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -149,6 +155,23 @@
 				5678AFB929B4EC960069550F /* SportsListMapper.swift */,
 			);
 			path = Mappers;
+			sourceTree = "<group>";
+		};
+		5678AFBD29B4FF7D0069550F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5678AFBE29B4FF890069550F /* Fixtures */,
+				5678AFC129B500280069550F /* SportsViewControllerViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5678AFBE29B4FF890069550F /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				5678AFBF29B4FFF40069550F /* my_sports.json */,
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		56E1320029B257FB00F176BC /* Coordinators */ = {
@@ -268,7 +291,9 @@
 		56FBB5AC29B22ACD00310D9C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5678AFBD29B4FF7D0069550F /* ViewModels */,
 				56FBB5AD29B22ACD00310D9C /* AppTests.swift */,
+				5678AFC329B5005E0069550F /* TestUtilities.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -403,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5678AFC929B503700069550F /* my_sports.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +468,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5678AFC529B500700069550F /* TestUtilities.swift in Sources */,
+				5678AFC229B500280069550F /* SportsViewControllerViewModelTests.swift in Sources */,
 				56FBB5AE29B22ACD00310D9C /* AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

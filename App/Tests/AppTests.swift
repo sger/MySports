@@ -6,7 +6,8 @@
 //
 
 import XCTest
-@testable import App
+@testable import MySports
+import Models
 
 final class AppTests: XCTestCase {
 

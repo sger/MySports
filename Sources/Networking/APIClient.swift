@@ -65,7 +65,7 @@ public final class APIClient {
         return APIRequest(task: task)
     }
 
-    static func createModel<T: Decodable>(model: T.Type,
+    public static func createModel<T: Decodable>(model: T.Type,
                                           fromData data: Data?,
                                           withCamelCaseConvertion convert: Bool = true,
                                           dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .secondsSince1970) -> T? {
