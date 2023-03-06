@@ -6,7 +6,7 @@ extension EventCollectionViewCell {
         var name: String
         var time: TimeInterval
         var isFavorite: Bool
-        
+
         init(name: String, time: TimeInterval, isFavorite: Bool) {
             self.name = name
             self.time = time

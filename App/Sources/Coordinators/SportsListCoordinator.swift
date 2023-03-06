@@ -11,7 +11,7 @@ final class SportsListCoordinator: BaseCoordinator {
 
     override func start() {
         let sportsViewController = SportsListViewController.create()
-        
+
         router.push(sportsViewController, animated: false)
         self.sportsViewController = sportsViewController
     }

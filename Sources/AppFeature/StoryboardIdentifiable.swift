@@ -9,7 +9,7 @@ public protocol StoryboardIdentifiable {
     ///
     /// By convention, the identifier (set in Interface Builder) and the class name **should be identical**.
     ///
-    ///- Important: For nib-backed cells, the filename should also be equal to this identifier.
+    /// - Important: For nib-backed cells, the filename should also be equal to this identifier.
     static var identifier: String { get }
 }
 

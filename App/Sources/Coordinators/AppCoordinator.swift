@@ -20,7 +20,7 @@ final class AppCoordinator: BaseCoordinator {
         window.rootViewController = rootViewController
         add(sportsCoordinator)
         sportsCoordinator.start()
-        
+
         window.makeKeyAndVisible()
     }
 }

@@ -11,10 +11,10 @@ import Networking
 @available(iOS 13.0, *)
 func customNavBarAppearance() -> UINavigationBarAppearance {
     let customNavBarAppearance = UINavigationBarAppearance()
-    
+
     customNavBarAppearance.configureWithOpaqueBackground()
     customNavBarAppearance.backgroundColor = UIColor.sportsNavigationBarColor
-    
+
     customNavBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
     customNavBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
 
@@ -26,16 +26,16 @@ func customNavBarAppearance() -> UINavigationBarAppearance {
     customNavBarAppearance.buttonAppearance = barButtonItemAppearance
     customNavBarAppearance.backButtonAppearance = barButtonItemAppearance
     customNavBarAppearance.doneButtonAppearance = barButtonItemAppearance
-    
+
     return customNavBarAppearance
 }
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-      
+
         let newNavBarAppearance = customNavBarAppearance()
-                
+
         let appearance = UINavigationBar.appearance()
         appearance.scrollEdgeAppearance = newNavBarAppearance
         appearance.compactAppearance = newNavBarAppearance
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 15.0, *) {
             appearance.compactScrollEdgeAppearance = newNavBarAppearance
         }
-        
+
         return true
     }
 
@@ -61,6 +61,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
 }
-

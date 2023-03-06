@@ -3,7 +3,7 @@ import Foundation
 open class BaseCoordinator: Coordinator {
 
     public var children: [Coordinator] = []
-    
+
     public init() {}
 
     open func start() {

@@ -4,13 +4,13 @@ public struct SportsDTO: Codable {
     public let id: ID
     public let name: String
     public let events: [SportsDTO.EventDTO]
-    
+
     enum CodingKeys: String, CodingKey {
         case id = "i"
         case name = "d"
         case events = "e"
     }
-    
+
     public enum ID: String, Codable {
         case badm = "BADM"
         case bask = "BASK"
@@ -22,7 +22,7 @@ public struct SportsDTO: Codable {
         case tabl = "TABL"
         case tenn = "TENN"
         case voll = "VOLL"
-        
+
         public var image: String {
             switch self {
             case .badm:
@@ -57,7 +57,7 @@ extension SportsDTO {
         public let sportID: ID
         public let sh: String
         public let time: TimeInterval
-        
+
         enum CodingKeys: String, CodingKey {
             case name = "d"
             case id = "i"

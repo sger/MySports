@@ -23,7 +23,7 @@ public final class APIClient {
     }
 
     private let urlSession = URLSession(configuration: .default)
-    
+
     public init() {}
 
     @discardableResult
@@ -66,9 +66,9 @@ public final class APIClient {
     }
 
     public static func createModel<T: Decodable>(model: T.Type,
-                                          fromData data: Data?,
-                                          withCamelCaseConvertion convert: Bool = true,
-                                          dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .secondsSince1970) -> T? {
+                                                 fromData data: Data?,
+                                                 withCamelCaseConvertion convert: Bool = true,
+                                                 dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .secondsSince1970) -> T? {
         guard let data = data else {
             return nil
         }
@@ -83,7 +83,6 @@ public final class APIClient {
             return model
 
         } catch let error {
-            print(error)
             return nil
         }
      }

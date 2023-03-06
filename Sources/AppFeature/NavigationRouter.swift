@@ -32,8 +32,8 @@ extension NavigationRouter: Router {
     }
 
     public func present(_ viewController: UIViewController,
-                 animated: Bool,
-                 completion: (() -> Void)?) {
+                        animated: Bool,
+                        completion: (() -> Void)?) {
         completions[viewController] = completion
         navigationController.present(viewController, animated: animated, completion: nil)
     }
@@ -56,12 +56,10 @@ extension NavigationRouter: Router {
 extension NavigationRouter: UINavigationControllerDelegate {
 
     public func navigationController(_ navigationController: UINavigationController,
-                              didShow viewController: UIViewController,
-                              animated: Bool) {
+                                     didShow viewController: UIViewController,
+                                     animated: Bool) {
         guard let dismissedViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
             !navigationController.viewControllers.contains(dismissedViewController) else { return }
         performCompletion(for: dismissedViewController)
     }
 }
-
-

@@ -6,14 +6,14 @@ protocol SportsHeaderViewDelegate: AnyObject {
 }
 
 final class SportsHeaderView: UIView, NibBackedViewProtocol {
-    
+
     @IBOutlet private weak var arrowImageView: UIImageView!
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var categoryImageView: UIImageView!
-    
+
     weak var delegate: SportsHeaderViewDelegate?
     private var section: Int = 0
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = UIColor.sportsHeaderTextColor
@@ -22,25 +22,25 @@ final class SportsHeaderView: UIView, NibBackedViewProtocol {
         setupGestureRecognizer()
         animateArrowImage()
     }
-    
+
     func configure(with value: String, section: Int, image: String) {
         categoryLabel.text = value
         categoryImageView.image = UIImage(named: image)
         self.section = section
     }
-    
+
     private func setupGestureRecognizer() {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
         gesture.numberOfTouchesRequired = 1
         gesture.numberOfTapsRequired = 1
         addGestureRecognizer(gesture)
     }
-    
+
     @objc private func viewTapped(_ gesture: UITapGestureRecognizer) {
         animateArrowImage()
         delegate?.sportsHeaderViewDidTapActionButton(self, section: section)
     }
-    
+
     private func animateArrowImage() {
         UIView.animate(withDuration: 0.5) {
             self.arrowImageView.transform = self.arrowImageView.transform.rotated(by: 180 * CGFloat(Double.pi/180))

@@ -127,4 +127,3 @@ extension ReusableViewProtocol where Self: UICollectionReusableView {
         return cell
     }
 }
-

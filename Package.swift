@@ -11,7 +11,7 @@ let package = Package(
     products: [
         .library(name: "Models", targets: ["Models"]),
         .library(name: "Networking", targets: ["Networking"]),
-        .library(name: "AppFeature", targets: ["AppFeature"]),
+        .library(name: "AppFeature", targets: ["AppFeature"])
     ],
     dependencies: [
     ],
