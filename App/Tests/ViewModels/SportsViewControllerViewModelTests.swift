@@ -1,53 +1,75 @@
 //
-//  SportsViewControllerViewModelTests.swift
+//  SportsListViewControllerNewViewModelTests.swift
 //  MySportsTests
 //
-//  Created by Spiros Gerokostas on 5/3/23.
+//  Created by Spiros Gerokostas on 6/3/23.
 //
 
 import XCTest
 @testable import MySports
-import Models
+import Combine
 import Networking
+import SnapshotTesting
 
-final class SportsViewControllerViewModelTests: XCTestCase {
+final class SportsListViewControllerNewViewModelTests: XCTestCase {
+    private var useCaseMock: SportsListUseCaseMock?
+    private var disposeBag: Set<AnyCancellable>?
 
-    lazy private var sportsDTO: [SportsDTO]? = {
-        guard let data = TestUtilities.dataFromJSON(file: "my_sports", bundle: Bundle(for: type(of: self))),
-              let dataDTO = APIClient.createModel(model: [SportsDTO].self, fromData: data) else {
-            return []
-        }
-        return dataDTO
-    }()
+    override func setUpWithError() throws {
+        useCaseMock = SportsListUseCaseMock()
+        disposeBag = []
+    }
 
-    func testViewModelResponse() throws {
-        let sportsDTO = try XCTUnwrap(self.sportsDTO)
-        let response: Result<[SportsDTO], Error> = .success(sportsDTO)
-        let mockApiClient = MockApiClient(response: response)
-
+    func testWhenViewModelIsLoadingThenShowList() throws {
+        let useCaseMock = try XCTUnwrap(self.useCaseMock)
+        var disposeBag = try XCTUnwrap(self.disposeBag)
+        
         let event = EventCollectionViewCell.Event(name: "Juventus FC - Paris Saint-Germain", time: 1667447160, isFavorite: false)
         let list = SportsListViewController.List(categoryName: "SOCCER", events: [[event]], isExpanded: true, categoryImage: "football")
-
-        let sut = SportsListViewController.ViewModel(apiClient: mockApiClient)
-        sut.fetchSports { result in
-            switch result {
-            case let .success(response):
-                XCTAssertEqual(response, [list])
-            case .failure:
-                break
-            }
-        }
+        
+        useCaseMock.result = [list]
+        
+        let expected = [
+          State<SportsListViewController.List>.loading,
+          State<SportsListViewController.List>.loaded([list])
+        ]
+        
+        var received = [State<SportsListViewController.List>]()
+        
+        let sut = SportsListViewController.ViewModel(useCase: useCaseMock, scheduler: .immediate)
+        
+        sut.currentValueSubject.removeDuplicates()
+          .sink(receiveValue: { received.append($0) }).store(in: &disposeBag)
+        
+        sut.viewDidLoad()
+        
+        XCTAssertEqual(expected, received, "should contain 1 item in list")
     }
 }
 
-final class MockApiClient: SportsType {
-    var response: Result<[Models.SportsDTO], Error>
+class SportsListUseCaseMock: SportsListUseCaseProtocol {
+    var error: DataTransferError?
+    var result: [SportsListViewController.List]?
+    
+    func execute() -> AnyPublisher<[SportsListViewController.List], Networking.DataTransferError> {
+        if let error = error {
+          return Fail(error: error).eraseToAnyPublisher()
+        }
 
-    init(response: Result<[Models.SportsDTO], Error>) {
-        self.response = response
+        if let result = result {
+          return Just(result).setFailureType(to: DataTransferError.self).eraseToAnyPublisher()
+        }
+
+        return Empty().setFailureType(to: DataTransferError.self).eraseToAnyPublisher()
     }
+}
 
-    func fetchSports(completionHandler: @escaping ((Result<[Models.SportsDTO], Error>) -> Void)) {
-        completionHandler(self.response)
+class SportsListViewModelMock: SportsListViewModelProtocol {
+    func viewDidLoad() {}
+    
+    let currentValueSubject: CurrentValueSubject<State<SportsListViewController.List>, Never>
+    
+    init(state: State<SportsListViewController.List>) {
+        currentValueSubject = CurrentValueSubject(state)
     }
 }

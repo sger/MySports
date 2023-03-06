@@ -5,42 +5,18 @@ import Combine
 import CombineSchedulers
 
 final class SportsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    private enum State<T> {
-        case loading
-        case loaded(T)
-        case error(Error)
-    }
-
     @IBOutlet private weak var tableView: UITableView!
 
     private var list: [SportsListViewController.List] = []
-    private var viewModel: SportsListViewController.ViewModel = SportsListViewController.ViewModel()
-    private var newViewModel: NewViewModelProtcol?
+    private var viewModel: SportsListViewModelProtocol?
     private var disposeBag = Set<AnyCancellable>()
     private var scheduler: AnySchedulerOf<DispatchQueue>?
 
-    static func instatiate(with viewModel: NewViewModelProtcol, scheduler: AnySchedulerOf<DispatchQueue> = .main) -> SportsListViewController {
+    static func instatiate(with viewModel: SportsListViewModelProtocol, scheduler: AnySchedulerOf<DispatchQueue> = .main) -> SportsListViewController {
         let viewController = SportsListViewController.create()
-        viewController.newViewModel = viewModel
+        viewController.viewModel = viewModel
         viewController.scheduler = scheduler
         return viewController
-    }
-
-    private var state: State<[SportsListViewController.List]> = .loading {
-        didSet {
-            switch state {
-            case .loading:
-                break
-            case let .loaded(response):
-                DispatchQueue.main.async {
-                    self.list = response
-                    self.tableView.reloadData()
-                }
-            case let .error(error):
-                print(error)
-                // Handle error from server
-            }
-        }
     }
 
     override func viewDidLoad() {
@@ -48,14 +24,13 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
         setupViewControllerAttributes()
         setupTableView()
-//        loadSportsData()
         
         guard let scheduler = scheduler else {
             return
         }
 
-        newViewModel?.viewDidLoad()
-        newViewModel?
+        viewModel?.viewDidLoad()
+        viewModel?
             .currentValueSubject
             .receive(on: scheduler)
             .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] state in
@@ -80,19 +55,6 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
     private func setupViewControllerAttributes() {
         title = "My Sports"
         view.backgroundColor = UIColor.sportsBackgroundColor
-    }
-
-    private func loadSportsData() {
-        state = .loading
-
-        viewModel.fetchSports { result in
-            switch result {
-            case let .success(sportsData):
-                self.state = .loaded(sportsData)
-            case let .failure(error):
-                self.state = .error(error)
-            }
-        }
     }
 
     private func setupTableView() {

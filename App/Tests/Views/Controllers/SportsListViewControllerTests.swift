@@ -26,7 +26,7 @@ final class SportsListViewControllerTests: XCTestCase {
         let list = SportsListViewController.List(categoryName: "SOCCER", events: [[event]], isExpanded: true, categoryImage: "football")
         useCaseMock.result = [list]
         
-        let viewModel = SportsListViewController.NewViewModel(useCase: useCaseMock, scheduler: .immediate)
+        let viewModel = SportsListViewController.ViewModel(useCase: useCaseMock, scheduler: .immediate)
         
         let viewController = SportsListViewController.instatiate(with: viewModel, scheduler: .immediate)
         assertSnapshot(matching: viewController, as: .image)
@@ -38,7 +38,7 @@ final class SportsListViewControllerTests: XCTestCase {
         let list = SportsListViewController.List(categoryName: "SOCCER", events: [[event]], isExpanded: true, categoryImage: "football")
         useCaseMock.result = [list]
         
-        let viewModel = SportsListViewController.NewViewModel(useCase: useCaseMock, scheduler: .immediate)
+        let viewModel = SportsListViewController.ViewModel(useCase: useCaseMock, scheduler: .immediate)
         
         let viewController = SportsListViewController.instatiate(with: viewModel, scheduler: .immediate)
         assertSnapshot(matching: viewController, as: .image)
@@ -51,7 +51,7 @@ final class SportsListViewControllerTests: XCTestCase {
         let listBasketball = SportsListViewController.List(categoryName: "BASKETBALL", events: [[event]], isExpanded: true, categoryImage: "basketball")
         useCaseMock.result = [listSoccer, listBasketball]
         
-        let viewModel = SportsListViewController.NewViewModel(useCase: useCaseMock, scheduler: .immediate)
+        let viewModel = SportsListViewController.ViewModel(useCase: useCaseMock, scheduler: .immediate)
         
         let viewController = SportsListViewController.instatiate(with: viewModel, scheduler: .immediate)
         assertSnapshot(matching: viewController, as: .image)
