@@ -3,11 +3,34 @@ import AppFeature
 import Networking
 
 final class SportsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    enum State<T> {
+        case loading
+        case loaded(T)
+        case error(Error)
+    }
 
     @IBOutlet private weak var tableView: UITableView!
 
     private var list: [SportsListViewController.List] = []
     private var viewModel: SportsListViewController.ViewModel = SportsListViewController.ViewModel()
+    
+    private var state: State<[SportsListViewController.List]> = .loading {
+        didSet {
+            switch state {
+            case .loading:
+                break
+            case let .loaded(response):
+                DispatchQueue.main.async {
+                    self.list = response
+                    self.tableView.reloadData()
+                }
+            case let .error(error):
+                print(error)
+                // Handle error from server
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +46,14 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     private func loadSportsData() {
+        state = .loading
+        
         viewModel.fetchSports { result in
             switch result {
             case let .success(sportsData):
-                self.list = sportsData
-
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case .failure:
-                break
+                self.state = .loaded(sportsData)
+            case let .failure(error):
+                self.state = .error(error)
             }
         }
     }
