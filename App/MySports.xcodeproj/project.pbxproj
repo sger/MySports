@@ -139,6 +139,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5619BA9029B6793200A7861E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				56FBB59629B22ACB00310D9C /* AppDelegate.swift */,
+				56A8395029B634D200EF5A25 /* AppDependencies.swift */,
+				56FBB59829B22ACB00310D9C /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5619BA9129B6794400A7861E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				56FBB59F29B22ACD00310D9C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5622CBBA29B3870500B69310 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,13 +341,11 @@
 		56FBB59529B22ACB00310D9C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				56FBB59629B22ACB00310D9C /* AppDelegate.swift */,
-				56A8395029B634D200EF5A25 /* AppDependencies.swift */,
-				56FBB59F29B22ACD00310D9C /* Assets.xcassets */,
+				5619BA9029B6793200A7861E /* App */,
 				56E1320029B257FB00F176BC /* Coordinators */,
 				56FBB5A429B22ACD00310D9C /* Info.plist */,
 				56E1321529B26E4500F176BC /* Modules */,
-				56FBB59829B22ACB00310D9C /* SceneDelegate.swift */,
+				5619BA9129B6794400A7861E /* Resources */,
 				56E1321C29B26EC300F176BC /* Storyboards */,
 			);
 			path = Sources;
