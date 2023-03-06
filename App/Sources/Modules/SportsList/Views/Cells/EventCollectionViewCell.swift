@@ -8,7 +8,7 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
     @IBOutlet private weak var infoLabel: UILabel!
     @IBOutlet private weak var favoriteImageView: UIImageView!
     @IBOutlet private weak var fillFavoriteImageView: UIImageView!
-    
+
     private let viewModel = EventCollectionViewCell.ViewModel()
     private let timeElapsedMonitor = TimeElapsedMonitor()
 
@@ -41,9 +41,9 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         }
 
         titleLabel.text = event.name
-        
+
         configureFavoriteEvent(with: event)
-    
+
         timeElapsedMonitor.start(with: event.time)
     }
 
@@ -52,14 +52,14 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         infoLabel.isHidden = false
         timeLabel.isHidden = true
     }
-    
+
     private func configureFavoriteEvent(with event: Event) {
         guard event.isFavorite else {
             fillFavoriteImageView.isHidden = true
             favoriteImageView.isHidden = false
             return
         }
-        
+
         fillFavoriteImageView.isHidden = false
         favoriteImageView.isHidden = true
     }
@@ -69,7 +69,7 @@ extension EventCollectionViewCell: TimeElapsedMonitorDelegate {
     func timeElapsedDidUpdate(_ timeElapsedMonitor: TimeElapsedMonitor, with secondsLeftUntilEvent: TimeInterval) {
         timeLabel.text = viewModel.timeElapsed(with: secondsLeftUntilEvent)
     }
-    
+
     func timeElapsedDidStop(_ timeElapsedMonitor: TimeElapsedMonitor) {
         updateUI(with: "Event ended")
     }

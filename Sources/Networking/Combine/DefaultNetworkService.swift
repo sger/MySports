@@ -70,10 +70,3 @@ public final class DefaultNetworkService: NetworkService {
     }
   }
 }
-
-func printIfDebug(_ string: String) {
-  #if DEBUG
-  print(string)
-  #endif
-}
-

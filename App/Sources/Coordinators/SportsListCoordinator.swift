@@ -15,7 +15,7 @@ final class SportsListCoordinator: BaseCoordinator {
         let repository = SportsListRepository(dataTransferService: appDependencies.apiDataTransferService, sportsListMapper: SportsListMapper())
         let useCase = SportsListUseCase(repository: repository)
         let viewModel = SportsListViewController.NewViewModel(useCase: useCase)
-        
+
         let sportsViewController = SportsListViewController.instatiate(with: viewModel)
 
         router.push(sportsViewController, animated: false)

@@ -8,7 +8,7 @@ protocol SportsListUseCaseProtocol {
 
 final class SportsListUseCase {
     private let repository: SportsListRepository
-    
+
     init(repository: SportsListRepository) {
         self.repository = repository
     }

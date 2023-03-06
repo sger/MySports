@@ -44,6 +44,7 @@
 		56FBB5A329B22ACD00310D9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FBB5A129B22ACD00310D9C /* LaunchScreen.storyboard */; };
 		56FBB5B829B22ACD00310D9C /* AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FBB5B729B22ACD00310D9C /* AppUITests.swift */; };
 		56FBB5BA29B22ACD00310D9C /* AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FBB5B929B22ACD00310D9C /* AppUITestsLaunchTests.swift */; };
+		56FCEB2529B659C100B93088 /* SportsListViewControllerNewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEB2429B659C100B93088 /* SportsListViewControllerNewViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		56FBB5B729B22ACD00310D9C /* AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITests.swift; sourceTree = "<group>"; };
 		56FBB5B929B22ACD00310D9C /* AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		56FBB5C629B22BF600310D9C /* Sports */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Sports; path = ..; sourceTree = "<group>"; };
+		56FCEB2429B659C100B93088 /* SportsListViewControllerNewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListViewControllerNewViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				5678AFBE29B4FF890069550F /* Fixtures */,
 				5678AFC129B500280069550F /* SportsViewControllerViewModelTests.swift */,
 				56A8393B29B61E4200EF5A25 /* EventCollectionViewCellViewModelTests.swift */,
+				56FCEB2429B659C100B93088 /* SportsListViewControllerNewViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -316,14 +319,14 @@
 		56FBB59529B22ACB00310D9C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				56E1321C29B26EC300F176BC /* Storyboards */,
-				56E1321529B26E4500F176BC /* Modules */,
-				56E1320029B257FB00F176BC /* Coordinators */,
 				56FBB59629B22ACB00310D9C /* AppDelegate.swift */,
-				56FBB59829B22ACB00310D9C /* SceneDelegate.swift */,
-				56FBB59F29B22ACD00310D9C /* Assets.xcassets */,
-				56FBB5A429B22ACD00310D9C /* Info.plist */,
 				56A8395029B634D200EF5A25 /* AppDependencies.swift */,
+				56FBB59F29B22ACD00310D9C /* Assets.xcassets */,
+				56E1320029B257FB00F176BC /* Coordinators */,
+				56FBB5A429B22ACD00310D9C /* Info.plist */,
+				56E1321529B26E4500F176BC /* Modules */,
+				56FBB59829B22ACB00310D9C /* SceneDelegate.swift */,
+				56E1321C29B26EC300F176BC /* Storyboards */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5678AFC529B500700069550F /* TestUtilities.swift in Sources */,
+				56FCEB2529B659C100B93088 /* SportsListViewControllerNewViewModelTests.swift in Sources */,
 				5678AFC229B500280069550F /* SportsViewControllerViewModelTests.swift in Sources */,
 				56A8393C29B61E4200EF5A25 /* EventCollectionViewCellViewModelTests.swift in Sources */,
 			);

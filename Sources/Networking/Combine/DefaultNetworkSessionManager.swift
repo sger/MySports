@@ -9,4 +9,3 @@ public class DefaultNetworkSessionManager: NetworkSessionManager {
     return URLSession.shared.dataTaskPublisher(for: request).eraseToAnyPublisher()
   }
 }
-
