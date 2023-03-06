@@ -23,9 +23,9 @@ final class SportsHeaderView: UIView, NibBackedViewProtocol {
         animateArrowImage()
     }
 
-    func configure(with value: String, section: Int, image: String) {
-        categoryLabel.text = value
-        categoryImageView.image = UIImage(named: image)
+    func configure(with list: SportsListViewController.List, section: Int) {
+        categoryLabel.text = list.categoryName
+        categoryImageView.image = UIImage(named: list.categoryImage)
         self.section = section
     }
 

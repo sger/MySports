@@ -68,7 +68,7 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = SportsHeaderView.loadFromNib()
-        view.configure(with: list[section].categoryName, section: section, image: list[section].categoryImage)
+        view.configure(with: list[section], section: section)
         view.delegate = self
         return view
     }
@@ -103,10 +103,9 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
     private func headerViewTapped(with section: Int) {
         var indexPaths = [IndexPath]()
-
-        for row in list[section].events.indices {
-            let indexPath = IndexPath(row: row, section: section)
-            indexPaths.append(indexPath)
+        
+        list[section].events.indices.forEach {
+            indexPaths.append(IndexPath(item: $0, section: section))
         }
 
         let isExpanded = list[section].isExpanded
