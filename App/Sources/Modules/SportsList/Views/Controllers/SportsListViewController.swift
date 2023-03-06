@@ -3,8 +3,7 @@ import AppFeature
 import Networking
 
 final class SportsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    enum State<T> {
+    private enum State<T> {
         case loading
         case loaded(T)
         case error(Error)
@@ -14,7 +13,7 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
     private var list: [SportsListViewController.List] = []
     private var viewModel: SportsListViewController.ViewModel = SportsListViewController.ViewModel()
-    
+
     private var state: State<[SportsListViewController.List]> = .loading {
         didSet {
             switch state {
@@ -47,7 +46,7 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
     private func loadSportsData() {
         state = .loading
-        
+
         viewModel.fetchSports { result in
             switch result {
             case let .success(sportsData):
@@ -103,7 +102,7 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
     private func headerViewTapped(with section: Int) {
         var indexPaths = [IndexPath]()
-        
+
         list[section].events.indices.forEach {
             indexPaths.append(IndexPath(item: $0, section: section))
         }

@@ -15,7 +15,6 @@ extension SportsListViewController {
                 case let .success(response):
                     completion(.success(SportsListMapper().mapSportsListDTO(response)))
                 case let .failure(error):
-                    print(error)
                     completion(.failure(error))
                 }
             }

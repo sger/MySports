@@ -43,7 +43,7 @@ final class SportsHeaderView: UIView, NibBackedViewProtocol {
 
     private func animateArrowImage() {
         UIView.animate(withDuration: 0.5) {
-            self.arrowImageView.transform = self.arrowImageView.transform.rotated(by: 180 * CGFloat(Double.pi/180))
+            self.arrowImageView.transform = self.arrowImageView.transform.rotated(by: 180 * CGFloat(Double.pi / 180))
         }
     }
 }

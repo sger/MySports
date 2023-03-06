@@ -16,7 +16,7 @@ extension UINavigationBarAppearance {
         barButtonItemAppearance.disabled.titleTextAttributes = [.foregroundColor: UIColor.lightText]
         barButtonItemAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.label]
         barButtonItemAppearance.focused.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
+
         navigationBarAppearance.buttonAppearance = barButtonItemAppearance
         navigationBarAppearance.backButtonAppearance = barButtonItemAppearance
         navigationBarAppearance.doneButtonAppearance = barButtonItemAppearance
