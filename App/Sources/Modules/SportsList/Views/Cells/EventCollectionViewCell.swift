@@ -1,8 +1,6 @@
 import UIKit
 import AppFeature
 
-public typealias Time = (days: Int, hours: Int, minutes: Int, seconds: Int)
-
 final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol {
 
     @IBOutlet private weak var timeLabel: UILabel!
@@ -10,6 +8,8 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
     @IBOutlet private weak var infoLabel: UILabel!
     @IBOutlet private weak var favoriteImageView: UIImageView!
     @IBOutlet private weak var fillFavoriteImageView: UIImageView!
+    
+    private let viewModel = EventCollectionViewCell.ViewModel()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,45 +38,37 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         }
 
         titleLabel.text = event.name
+        
+        configureFavoriteEvent(with: event)
+        
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
 
-        if event.isFavorite {
-            fillFavoriteImageView.isHidden = false
-            favoriteImageView.isHidden = true
-        } else {
-            fillFavoriteImageView.isHidden = true
-            favoriteImageView.isHidden = false
-        }
-
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-
-            let currentUnixTime = Date().timeIntervalSince1970
-            let secondsLeftUntilEvent = 1678116087 - currentUnixTime // event.time
+            let now = Date().timeIntervalSince1970
+            let secondsLeftUntilEvent = 1678116087 - now // event.time
 
             if secondsLeftUntilEvent < 0 {
-                self.updateUI(with: "Event ended")
+                self?.updateUI(with: "Event ended")
                 timer.invalidate()
             }
 
-            self.updateUI(with: self.countdownTime(from: secondsLeftUntilEvent))
-
+            self?.timeLabel.text = self?.viewModel.timeElapsed(with: secondsLeftUntilEvent)
         }
     }
 
-    func updateUI(with value: String) {
-        infoLabel.isHidden = false
+    private func updateUI(with value: String) {
         infoLabel.text = value
+        infoLabel.isHidden = false
         timeLabel.isHidden = true
     }
-
-    func updateUI(with time: Time) {
-        timeLabel.text = "\(time.days.stringWithLeadingZeros):\(time.hours.stringWithLeadingZeros):\(time.minutes.stringWithLeadingZeros):\(time.seconds.stringWithLeadingZeros)"
-    }
-
-    func countdownTime(from secondsUntilEvent: Double) -> Time {
-        let days = Int(secondsUntilEvent / 86400)
-        let hours = Int(secondsUntilEvent.truncatingRemainder(dividingBy: 86400) / 3600)
-        let minutes = Int(secondsUntilEvent.truncatingRemainder(dividingBy: 3600) / 60)
-        let seconds = Int(secondsUntilEvent.truncatingRemainder(dividingBy: 60))
-        return (days, hours, minutes, seconds)
+    
+    private func configureFavoriteEvent(with event: Event) {
+        guard event.isFavorite else {
+            fillFavoriteImageView.isHidden = true
+            favoriteImageView.isHidden = false
+            return
+        }
+        
+        fillFavoriteImageView.isHidden = false
+        favoriteImageView.isHidden = true
     }
 }
