@@ -11,14 +11,15 @@
 		5622CBBF29B391C300B69310 /* EventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5622CBBE29B391C300B69310 /* EventCollectionViewCell.xib */; };
 		5622CBC129B391D900B69310 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CBC029B391D900B69310 /* EventCollectionViewCell.swift */; };
 		5630949729B23E1D00378BE0 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 5630949629B23E1D00378BE0 /* Networking */; };
-		5630A34C29B3C3D40038AB20 /* Int+Sports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630A34B29B3C3D40038AB20 /* Int+Sports.swift */; };
-		5630A34E29B3C4B50038AB20 /* UIColor+Sports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630A34D29B3C4B50038AB20 /* UIColor+Sports.swift */; };
+		5630A34C29B3C3D40038AB20 /* Int+MySports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630A34B29B3C3D40038AB20 /* Int+MySports.swift */; };
+		5630A34E29B3C4B50038AB20 /* UIColor+MySports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630A34D29B3C4B50038AB20 /* UIColor+MySports.swift */; };
 		5630A35029B3CC760038AB20 /* SportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5630A34F29B3CC760038AB20 /* SportsHeaderView.xib */; };
 		5630A35229B3CC800038AB20 /* SportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630A35129B3CC800038AB20 /* SportsHeaderView.swift */; };
 		5678AFBA29B4EC960069550F /* SportsListMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AFB929B4EC960069550F /* SportsListMapper.swift */; };
 		5678AFC229B500280069550F /* SportsViewControllerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AFC129B500280069550F /* SportsViewControllerViewModelTests.swift */; };
 		5678AFC529B500700069550F /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678AFC329B5005E0069550F /* TestUtilities.swift */; };
 		5678AFC929B503700069550F /* my_sports.json in Resources */ = {isa = PBXBuildFile; fileRef = 5678AFBF29B4FFF40069550F /* my_sports.json */; };
+		56A838D029B5DBC300EF5A25 /* UINavigationBarAppearance+MySports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A838CF29B5DBC300EF5A25 /* UINavigationBarAppearance+MySports.swift */; };
 		56E1320229B2581500F176BC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1320129B2581500F176BC /* AppCoordinator.swift */; };
 		56E1320429B2582300F176BC /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 56E1320329B2582300F176BC /* AppFeature */; };
 		56E1320629B259F000F176BC /* SportsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1320529B259F000F176BC /* SportsListCoordinator.swift */; };
@@ -59,14 +60,15 @@
 		5622CBBB29B3880300B69310 /* SportsViewController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SportsViewController+ViewModel.swift"; sourceTree = "<group>"; };
 		5622CBBE29B391C300B69310 /* EventCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCollectionViewCell.xib; sourceTree = "<group>"; };
 		5622CBC029B391D900B69310 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
-		5630A34B29B3C3D40038AB20 /* Int+Sports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Sports.swift"; sourceTree = "<group>"; };
-		5630A34D29B3C4B50038AB20 /* UIColor+Sports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Sports.swift"; sourceTree = "<group>"; };
+		5630A34B29B3C3D40038AB20 /* Int+MySports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+MySports.swift"; sourceTree = "<group>"; };
+		5630A34D29B3C4B50038AB20 /* UIColor+MySports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+MySports.swift"; sourceTree = "<group>"; };
 		5630A34F29B3CC760038AB20 /* SportsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SportsHeaderView.xib; sourceTree = "<group>"; };
 		5630A35129B3CC800038AB20 /* SportsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsHeaderView.swift; sourceTree = "<group>"; };
 		5678AFB929B4EC960069550F /* SportsListMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListMapper.swift; sourceTree = "<group>"; };
 		5678AFBF29B4FFF40069550F /* my_sports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_sports.json; sourceTree = "<group>"; };
 		5678AFC129B500280069550F /* SportsViewControllerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewControllerViewModelTests.swift; sourceTree = "<group>"; };
 		5678AFC329B5005E0069550F /* TestUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtilities.swift; sourceTree = "<group>"; };
+		56A838CF29B5DBC300EF5A25 /* UINavigationBarAppearance+MySports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBarAppearance+MySports.swift"; sourceTree = "<group>"; };
 		56E1320129B2581500F176BC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		56E1320529B259F000F176BC /* SportsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListCoordinator.swift; sourceTree = "<group>"; };
 		56E1320729B25C4000F176BC /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -143,8 +145,9 @@
 		5630A34A29B3C3A70038AB20 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5630A34B29B3C3D40038AB20 /* Int+Sports.swift */,
-				5630A34D29B3C4B50038AB20 /* UIColor+Sports.swift */,
+				5630A34B29B3C3D40038AB20 /* Int+MySports.swift */,
+				5630A34D29B3C4B50038AB20 /* UIColor+MySports.swift */,
+				56A838CF29B5DBC300EF5A25 /* UINavigationBarAppearance+MySports.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -448,11 +451,12 @@
 			files = (
 				56E1320629B259F000F176BC /* SportsListCoordinator.swift in Sources */,
 				5622CBC129B391D900B69310 /* EventCollectionViewCell.swift in Sources */,
+				56A838D029B5DBC300EF5A25 /* UINavigationBarAppearance+MySports.swift in Sources */,
 				5630A35229B3CC800038AB20 /* SportsHeaderView.swift in Sources */,
 				56E1320229B2581500F176BC /* AppCoordinator.swift in Sources */,
-				5630A34C29B3C3D40038AB20 /* Int+Sports.swift in Sources */,
+				5630A34C29B3C3D40038AB20 /* Int+MySports.swift in Sources */,
 				56E1320E29B260F000F176BC /* EventCollectionViewCell+Event.swift in Sources */,
-				5630A34E29B3C4B50038AB20 /* UIColor+Sports.swift in Sources */,
+				5630A34E29B3C4B50038AB20 /* UIColor+MySports.swift in Sources */,
 				56FBB59B29B22ACB00310D9C /* SportsListViewController.swift in Sources */,
 				56E1321429B2658C00F176BC /* SportsListViewController+List.swift in Sources */,
 				56FBB59729B22ACB00310D9C /* AppDelegate.swift in Sources */,

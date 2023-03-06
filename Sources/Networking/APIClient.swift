@@ -83,6 +83,10 @@ public final class APIClient {
             return model
 
         } catch let error {
+            os_log("%@ %s",
+                   log: Log.APIClient,
+                   type: .debug, #function,
+                   error.localizedDescription)
             return nil
         }
      }
