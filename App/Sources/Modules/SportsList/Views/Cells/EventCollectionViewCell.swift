@@ -10,10 +10,12 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
     @IBOutlet private weak var fillFavoriteImageView: UIImageView!
     
     private let viewModel = EventCollectionViewCell.ViewModel()
+    private let timeElapsedMonitor = TimeElapsedMonitor()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
+        timeElapsedMonitor.delegate = self
     }
 
     private func setupUI() {
@@ -23,6 +25,7 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         timeLabel.textColor = UIColor.sportsTextColor
         titleLabel.textColor = UIColor.sportsTextColor
 
+        timeLabel.text = "00:00:00:00"
         timeLabel.layer.masksToBounds = true
         timeLabel.layer.cornerRadius = 6
         timeLabel.layer.borderColor = UIColor.sportsTextColor.cgColor
@@ -40,19 +43,8 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         titleLabel.text = event.name
         
         configureFavoriteEvent(with: event)
-        
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-
-            let now = Date().timeIntervalSince1970
-            let secondsLeftUntilEvent = 1678116087 - now // event.time
-
-            if secondsLeftUntilEvent < 0 {
-                self?.updateUI(with: "Event ended")
-                timer.invalidate()
-            }
-
-            self?.timeLabel.text = self?.viewModel.timeElapsed(with: secondsLeftUntilEvent)
-        }
+    
+        timeElapsedMonitor.start(with: event.time)
     }
 
     private func updateUI(with value: String) {
@@ -70,5 +62,15 @@ final class EventCollectionViewCell: UICollectionViewCell, NibBackedViewProtocol
         
         fillFavoriteImageView.isHidden = false
         favoriteImageView.isHidden = true
+    }
+}
+
+extension EventCollectionViewCell: TimeElapsedMonitorDelegate {
+    func timeElapsedDidUpdate(_ timeElapsedMonitor: TimeElapsedMonitor, with secondsLeftUntilEvent: TimeInterval) {
+        timeLabel.text = viewModel.timeElapsed(with: secondsLeftUntilEvent)
+    }
+    
+    func timeElapsedDidStop(_ timeElapsedMonitor: TimeElapsedMonitor) {
+        updateUI(with: "Event ended")
     }
 }

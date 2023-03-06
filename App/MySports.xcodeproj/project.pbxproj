@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561036BF29B64ACC00B14CF9 /* TimeElapsedMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561036BE29B64ACC00B14CF9 /* TimeElapsedMonitor.swift */; };
 		5622CBBC29B3880300B69310 /* SportsViewController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CBBB29B3880300B69310 /* SportsViewController+ViewModel.swift */; };
 		5622CBBF29B391C300B69310 /* EventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5622CBBE29B391C300B69310 /* EventCollectionViewCell.xib */; };
 		5622CBC129B391D900B69310 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622CBC029B391D900B69310 /* EventCollectionViewCell.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		561036BE29B64ACC00B14CF9 /* TimeElapsedMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeElapsedMonitor.swift; sourceTree = "<group>"; };
 		5622CBBB29B3880300B69310 /* SportsViewController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SportsViewController+ViewModel.swift"; sourceTree = "<group>"; };
 		5622CBBE29B391C300B69310 /* EventCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCollectionViewCell.xib; sourceTree = "<group>"; };
 		5622CBC029B391D900B69310 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				5678AFB829B4EC810069550F /* Mappers */,
+				561036BE29B64ACC00B14CF9 /* TimeElapsedMonitor.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				56FBB59729B22ACB00310D9C /* AppDelegate.swift in Sources */,
 				56E1320829B25C4000F176BC /* Storyboard.swift in Sources */,
 				56E1320A29B260A300F176BC /* SportsListTableViewCell.swift in Sources */,
+				561036BF29B64ACC00B14CF9 /* TimeElapsedMonitor.swift in Sources */,
 				5622CBBC29B3880300B69310 /* SportsViewController+ViewModel.swift in Sources */,
 				56A8394C29B62FA500EF5A25 /* SportsListViewController+NewViewModel.swift in Sources */,
 				56FBB59929B22ACB00310D9C /* SceneDelegate.swift in Sources */,
