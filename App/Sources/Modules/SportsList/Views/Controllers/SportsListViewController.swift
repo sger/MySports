@@ -1,6 +1,7 @@
 import UIKit
 import AppFeature
 import Networking
+import Combine
 
 final class SportsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private enum State<T> {
@@ -13,6 +14,14 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
     private var list: [SportsListViewController.List] = []
     private var viewModel: SportsListViewController.ViewModel = SportsListViewController.ViewModel()
+    private var newViewModel: NewViewModel?
+    private var disposeBag = Set<AnyCancellable>()
+    
+    static func instatiate(with viewModel: NewViewModel) -> SportsListViewController {
+        let viewController = SportsListViewController.create()
+        viewController.newViewModel = viewModel
+        return viewController
+    }
 
     private var state: State<[SportsListViewController.List]> = .loading {
         didSet {
@@ -36,7 +45,32 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
         setupViewControllerAttributes()
         setupTableView()
-        loadSportsData()
+//        loadSportsData()
+        
+        newViewModel?.fetchSportsList()
+        
+               newViewModel?
+                   .currentValueSubject
+               .receive(on: DispatchQueue.main)
+               .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] viewstate in
+                   switch viewstate {
+                       
+                   case .loading:
+                       break
+                   case .loaded(let result):
+                       print("!!!!! \(result)")
+                       self?.list = result
+                       
+                       DispatchQueue.main.async {
+                           self?.tableView.reloadData()
+                       }
+                   case .empty:
+                       break
+                   case .error(_):
+                       break
+                   }
+               })
+               .store(in: &disposeBag)
     }
 
     private func setupViewControllerAttributes() {

@@ -22,6 +22,11 @@
 		56A838D029B5DBC300EF5A25 /* UINavigationBarAppearance+MySports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A838CF29B5DBC300EF5A25 /* UINavigationBarAppearance+MySports.swift */; };
 		56A8393A29B6179E00EF5A25 /* EventCollectionViewCell+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8393929B6179E00EF5A25 /* EventCollectionViewCell+ViewModel.swift */; };
 		56A8393C29B61E4200EF5A25 /* EventCollectionViewCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8393B29B61E4200EF5A25 /* EventCollectionViewCellViewModelTests.swift */; };
+		56A8394729B62C2600EF5A25 /* SportsListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8394629B62C2600EF5A25 /* SportsListRepository.swift */; };
+		56A8394A29B62F1900EF5A25 /* SportsListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8394929B62F1900EF5A25 /* SportsListUseCase.swift */; };
+		56A8394C29B62FA500EF5A25 /* SportsListViewController+NewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8394B29B62FA500EF5A25 /* SportsListViewController+NewViewModel.swift */; };
+		56A8394F29B6302200EF5A25 /* CombineSchedulers in Frameworks */ = {isa = PBXBuildFile; productRef = 56A8394E29B6302200EF5A25 /* CombineSchedulers */; };
+		56A8395129B634D200EF5A25 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8395029B634D200EF5A25 /* AppDependencies.swift */; };
 		56E1320229B2581500F176BC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1320129B2581500F176BC /* AppCoordinator.swift */; };
 		56E1320429B2582300F176BC /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 56E1320329B2582300F176BC /* AppFeature */; };
 		56E1320629B259F000F176BC /* SportsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E1320529B259F000F176BC /* SportsListCoordinator.swift */; };
@@ -72,6 +77,10 @@
 		56A838CF29B5DBC300EF5A25 /* UINavigationBarAppearance+MySports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBarAppearance+MySports.swift"; sourceTree = "<group>"; };
 		56A8393929B6179E00EF5A25 /* EventCollectionViewCell+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCollectionViewCell+ViewModel.swift"; sourceTree = "<group>"; };
 		56A8393B29B61E4200EF5A25 /* EventCollectionViewCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCellViewModelTests.swift; sourceTree = "<group>"; };
+		56A8394629B62C2600EF5A25 /* SportsListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListRepository.swift; sourceTree = "<group>"; };
+		56A8394929B62F1900EF5A25 /* SportsListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListUseCase.swift; sourceTree = "<group>"; };
+		56A8394B29B62FA500EF5A25 /* SportsListViewController+NewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SportsListViewController+NewViewModel.swift"; sourceTree = "<group>"; };
+		56A8395029B634D200EF5A25 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		56E1320129B2581500F176BC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		56E1320529B259F000F176BC /* SportsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListCoordinator.swift; sourceTree = "<group>"; };
 		56E1320729B25C4000F176BC /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -101,6 +110,7 @@
 			files = (
 				5630949729B23E1D00378BE0 /* Networking in Frameworks */,
 				56E1320429B2582300F176BC /* AppFeature in Frameworks */,
+				56A8394F29B6302200EF5A25 /* CombineSchedulers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +136,7 @@
 			children = (
 				5622CBBB29B3880300B69310 /* SportsViewController+ViewModel.swift */,
 				56A8393929B6179E00EF5A25 /* EventCollectionViewCell+ViewModel.swift */,
+				56A8394B29B62FA500EF5A25 /* SportsListViewController+NewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -181,6 +192,22 @@
 			path = Fixtures;
 			sourceTree = "<group>";
 		};
+		56A8394529B62C0D00EF5A25 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				56A8394629B62C2600EF5A25 /* SportsListRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		56A8394829B62EE100EF5A25 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				56A8394929B62F1900EF5A25 /* SportsListUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		56E1320029B257FB00F176BC /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +228,8 @@
 		56E1321729B26E5200F176BC /* SportsList */ = {
 			isa = PBXGroup;
 			children = (
+				56A8394829B62EE100EF5A25 /* UseCases */,
+				56A8394529B62C0D00EF5A25 /* Repository */,
 				5630A34A29B3C3A70038AB20 /* Extensions */,
 				5630A34729B3BBA70038AB20 /* Logic */,
 				56E1321B29B26EB200F176BC /* Models */,
@@ -291,6 +320,7 @@
 				56FBB59829B22ACB00310D9C /* SceneDelegate.swift */,
 				56FBB59F29B22ACD00310D9C /* Assets.xcassets */,
 				56FBB5A429B22ACD00310D9C /* Info.plist */,
+				56A8395029B634D200EF5A25 /* AppDependencies.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -332,6 +362,7 @@
 			packageProductDependencies = (
 				5630949629B23E1D00378BE0 /* Networking */,
 				56E1320329B2582300F176BC /* AppFeature */,
+				56A8394E29B6302200EF5A25 /* CombineSchedulers */,
 			);
 			productName = App;
 			productReference = 56FBB59329B22ACB00310D9C /* MySports.app */;
@@ -405,6 +436,9 @@
 				Base,
 			);
 			mainGroup = 56FBB58A29B22ACB00310D9C;
+			packageReferences = (
+				56A8394D29B6302200EF5A25 /* XCRemoteSwiftPackageReference "combine-schedulers" */,
+			);
 			productRefGroup = 56FBB59429B22ACB00310D9C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -454,11 +488,14 @@
 			files = (
 				56E1320629B259F000F176BC /* SportsListCoordinator.swift in Sources */,
 				5622CBC129B391D900B69310 /* EventCollectionViewCell.swift in Sources */,
+				56A8394729B62C2600EF5A25 /* SportsListRepository.swift in Sources */,
+				56A8394A29B62F1900EF5A25 /* SportsListUseCase.swift in Sources */,
 				56A838D029B5DBC300EF5A25 /* UINavigationBarAppearance+MySports.swift in Sources */,
 				5630A35229B3CC800038AB20 /* SportsHeaderView.swift in Sources */,
 				56E1320229B2581500F176BC /* AppCoordinator.swift in Sources */,
 				5630A34C29B3C3D40038AB20 /* Int+MySports.swift in Sources */,
 				56E1320E29B260F000F176BC /* EventCollectionViewCell+Event.swift in Sources */,
+				56A8395129B634D200EF5A25 /* AppDependencies.swift in Sources */,
 				5630A34E29B3C4B50038AB20 /* UIColor+MySports.swift in Sources */,
 				56FBB59B29B22ACB00310D9C /* SportsListViewController.swift in Sources */,
 				56E1321429B2658C00F176BC /* SportsListViewController+List.swift in Sources */,
@@ -467,6 +504,7 @@
 				56E1320829B25C4000F176BC /* Storyboard.swift in Sources */,
 				56E1320A29B260A300F176BC /* SportsListTableViewCell.swift in Sources */,
 				5622CBBC29B3880300B69310 /* SportsViewController+ViewModel.swift in Sources */,
+				56A8394C29B62FA500EF5A25 /* SportsListViewController+NewViewModel.swift in Sources */,
 				56FBB59929B22ACB00310D9C /* SceneDelegate.swift in Sources */,
 				5678AFBA29B4EC960069550F /* SportsListMapper.swift in Sources */,
 			);
@@ -811,10 +849,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		56A8394D29B6302200EF5A25 /* XCRemoteSwiftPackageReference "combine-schedulers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/combine-schedulers";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		5630949629B23E1D00378BE0 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Networking;
+		};
+		56A8394E29B6302200EF5A25 /* CombineSchedulers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56A8394D29B6302200EF5A25 /* XCRemoteSwiftPackageReference "combine-schedulers" */;
+			productName = CombineSchedulers;
 		};
 		56E1320329B2582300F176BC /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
