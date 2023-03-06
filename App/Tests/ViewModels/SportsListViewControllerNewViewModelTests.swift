@@ -9,6 +9,7 @@ import XCTest
 @testable import MySports
 import Combine
 import Networking
+import SnapshotTesting
 
 final class SportsListViewControllerNewViewModelTests: XCTestCase {
     private var useCaseMock: SportsListUseCaseMock?
@@ -60,5 +61,15 @@ class SportsListUseCaseMock: SportsListUseCaseProtocol {
         }
 
         return Empty().setFailureType(to: DataTransferError.self).eraseToAnyPublisher()
+    }
+}
+
+class NewViewModelMock: NewViewModelProtcol {
+    func viewDidLoad() {}
+    
+    let currentValueSubject: CurrentValueSubject<State<SportsListViewController.List>, Never>
+    
+    init(state: State<SportsListViewController.List>) {
+        currentValueSubject = CurrentValueSubject(state)
     }
 }

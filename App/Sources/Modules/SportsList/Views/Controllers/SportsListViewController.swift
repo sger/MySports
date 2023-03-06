@@ -2,6 +2,7 @@ import UIKit
 import AppFeature
 import Networking
 import Combine
+import CombineSchedulers
 
 final class SportsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private enum State<T> {
@@ -14,12 +15,14 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
     private var list: [SportsListViewController.List] = []
     private var viewModel: SportsListViewController.ViewModel = SportsListViewController.ViewModel()
-    private var newViewModel: NewViewModel?
+    private var newViewModel: NewViewModelProtcol?
     private var disposeBag = Set<AnyCancellable>()
+    private var scheduler: AnySchedulerOf<DispatchQueue>?
 
-    static func instatiate(with viewModel: NewViewModel) -> SportsListViewController {
+    static func instatiate(with viewModel: NewViewModelProtcol, scheduler: AnySchedulerOf<DispatchQueue> = .main) -> SportsListViewController {
         let viewController = SportsListViewController.create()
         viewController.newViewModel = viewModel
+        viewController.scheduler = scheduler
         return viewController
     }
 
@@ -46,11 +49,15 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
         setupViewControllerAttributes()
         setupTableView()
 //        loadSportsData()
+        
+        guard let scheduler = scheduler else {
+            return
+        }
 
         newViewModel?.viewDidLoad()
         newViewModel?
             .currentValueSubject
-            .receive(on: DispatchQueue.main)
+            .receive(on: scheduler)
             .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] state in
                 switch state {
                 case .loading:

@@ -28,8 +28,13 @@ extension State: Equatable {
   }
 }
 
+protocol NewViewModelProtcol {
+    func viewDidLoad()
+    var currentValueSubject: CurrentValueSubject<State<SportsListViewController.List>, Never> { get }
+}
+
 extension SportsListViewController {
-    final class NewViewModel {
+    final class NewViewModel: NewViewModelProtcol {
         private let useCase: SportsListUseCaseProtocol
         private let scheduler: AnySchedulerOf<DispatchQueue>
         private var disposeBag = Set<AnyCancellable>()

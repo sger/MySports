@@ -45,6 +45,8 @@
 		56FBB5B829B22ACD00310D9C /* AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FBB5B729B22ACD00310D9C /* AppUITests.swift */; };
 		56FBB5BA29B22ACD00310D9C /* AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FBB5B929B22ACD00310D9C /* AppUITestsLaunchTests.swift */; };
 		56FCEB2529B659C100B93088 /* SportsListViewControllerNewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEB2429B659C100B93088 /* SportsListViewControllerNewViewModelTests.swift */; };
+		56FCEB2B29B6673800B93088 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 56FCEB2A29B6673800B93088 /* SnapshotTesting */; };
+		56FCEB2F29B671DE00B93088 /* SportsListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEB2E29B671DE00B93088 /* SportsListViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,7 @@
 		56FBB5B929B22ACD00310D9C /* AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		56FBB5C629B22BF600310D9C /* Sports */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Sports; path = ..; sourceTree = "<group>"; };
 		56FCEB2429B659C100B93088 /* SportsListViewControllerNewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListViewControllerNewViewModelTests.swift; sourceTree = "<group>"; };
+		56FCEB2E29B671DE00B93088 /* SportsListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56FCEB2B29B6673800B93088 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +338,7 @@
 		56FBB5AC29B22ACD00310D9C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				56FCEB2C29B670CB00B93088 /* Views */,
 				5678AFBD29B4FF7D0069550F /* ViewModels */,
 				5678AFC329B5005E0069550F /* TestUtilities.swift */,
 			);
@@ -347,6 +352,22 @@
 				56FBB5B929B22ACD00310D9C /* AppUITestsLaunchTests.swift */,
 			);
 			path = UITests;
+			sourceTree = "<group>";
+		};
+		56FCEB2C29B670CB00B93088 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				56FCEB2D29B670DB00B93088 /* Controllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		56FCEB2D29B670DB00B93088 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				56FCEB2E29B671DE00B93088 /* SportsListViewControllerTests.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +409,9 @@
 				56FBB5AB29B22ACD00310D9C /* PBXTargetDependency */,
 			);
 			name = MySportsTests;
+			packageProductDependencies = (
+				56FCEB2A29B6673800B93088 /* SnapshotTesting */,
+			);
 			productName = AppTests;
 			productReference = 56FBB5A929B22ACD00310D9C /* MySportsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -444,6 +468,7 @@
 			mainGroup = 56FBB58A29B22ACB00310D9C;
 			packageReferences = (
 				56A8394D29B6302200EF5A25 /* XCRemoteSwiftPackageReference "combine-schedulers" */,
+				56FCEB2929B6673800B93088 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 56FBB59429B22ACB00310D9C /* Products */;
 			projectDirPath = "";
@@ -524,6 +549,7 @@
 				5678AFC529B500700069550F /* TestUtilities.swift in Sources */,
 				56FCEB2529B659C100B93088 /* SportsListViewControllerNewViewModelTests.swift in Sources */,
 				5678AFC229B500280069550F /* SportsViewControllerViewModelTests.swift in Sources */,
+				56FCEB2F29B671DE00B93088 /* SportsListViewControllerTests.swift in Sources */,
 				56A8393C29B61E4200EF5A25 /* EventCollectionViewCellViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,6 +892,14 @@
 				minimumVersion = 0.9.1;
 			};
 		};
+		56FCEB2929B6673800B93088 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -881,6 +915,11 @@
 		56E1320329B2582300F176BC /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
+		};
+		56FCEB2A29B6673800B93088 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56FCEB2929B6673800B93088 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
