@@ -26,6 +26,12 @@ $ cd MySports
 $ swift package init
 ```
 
+The swift package **Sports** contains the following products:
+
+- **AppFeature** contains common code like router, coordinators logic.
+- **Models** contains the data tranfer objects from the server.
+- **Networking** the data tranfer service implemenation.
+
 In clean architecture we have different layers:
 
 - Presentation layer (MVVM)
@@ -34,8 +40,10 @@ In clean architecture we have different layers:
 
 The presentation layer contains UI like the view controller and the XIB files. For the coordination responsible are the view models which they are using use cases in order to execute network calls. The domain layer contains use cases and repositories interfaces. The data layer contains repositories implementations and data sources. Repositories are responsible for the passing the data and manage from different implemenation sources.
 
+FYI: the **without-combine** branch uses a version without apple's combine implemention.
+
 ### Snapshot testing
 
-I'm using Pointfree's Swift Snapshot Testing library for snapshot testing of the view controller. 
+I'm using Pointfree's swift Snapshot Testing library for snapshot testing of the view controller. 
 
 FYI: I ran the snapshot tests on the "iPhone 14 Pro" simulator. Unfortunately the snapshot library is not simulator agnostic, so if you use a different simulator there may well be mismatches.
