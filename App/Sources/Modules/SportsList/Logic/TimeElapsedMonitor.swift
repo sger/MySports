@@ -29,7 +29,7 @@ final class TimeElapsedMonitor {
             }
 
             let now = Date().timeIntervalSince1970
-//            let secondsLeftUntilEvent = 1678203430 - now
+//            let secondsLeftUntilEvent = 1678201868 - now
             let secondsLeftUntilEvent = eventTime - now
 
             if secondsLeftUntilEvent < 0 {
