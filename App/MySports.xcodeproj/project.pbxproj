@@ -172,6 +172,8 @@
 		5630A34729B3BBA70038AB20 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				56A8394529B62C0D00EF5A25 /* Repository */,
+				56A8394829B62EE100EF5A25 /* UseCases */,
 				5678AFB829B4EC810069550F /* Mappers */,
 				561036BE29B64ACC00B14CF9 /* TimeElapsedMonitor.swift */,
 			);
@@ -250,8 +252,6 @@
 		56E1321729B26E5200F176BC /* SportsList */ = {
 			isa = PBXGroup;
 			children = (
-				56A8394829B62EE100EF5A25 /* UseCases */,
-				56A8394529B62C0D00EF5A25 /* Repository */,
 				5630A34A29B3C3A70038AB20 /* Extensions */,
 				5630A34729B3BBA70038AB20 /* Logic */,
 				56E1321B29B26EB200F176BC /* Models */,
