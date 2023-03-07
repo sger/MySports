@@ -6,7 +6,7 @@ TARGET ?= MySports
 PLATFORM ?= iOS
 
 ifeq ($(PLATFORM), iOS)
-	DESTINATION ?= 'platform=iOS Simulator,name=iPhone 14 Plus,OS=16.2'
+	DESTINATION ?= 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2'
 endif
 
 XCPRETTY :=
