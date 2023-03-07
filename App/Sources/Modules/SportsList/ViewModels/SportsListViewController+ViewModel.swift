@@ -45,7 +45,7 @@ extension SportsListViewController {
             self.useCase = useCase
             self.scheduler = scheduler
         }
-        
+
         func viewDidLoad() {
             fetchSportsList()
         }

@@ -23,26 +23,26 @@ final class SportsListViewControllerNewViewModelTests: XCTestCase {
     func testWhenViewModelIsLoadingThenShowList() throws {
         let useCaseMock = try XCTUnwrap(self.useCaseMock)
         var disposeBag = try XCTUnwrap(self.disposeBag)
-        
+
         let event = EventCollectionViewCell.Event(name: "Juventus FC - Paris Saint-Germain", time: 1667447160, isFavorite: false)
         let list = SportsListViewController.List(categoryName: "SOCCER", events: [[event]], isExpanded: true, categoryImage: "football")
-        
+
         useCaseMock.result = [list]
-        
+
         let expected = [
           State<SportsListViewController.List>.loading,
           State<SportsListViewController.List>.loaded([list])
         ]
-        
+
         var received = [State<SportsListViewController.List>]()
-        
+
         let sut = SportsListViewController.ViewModel(useCase: useCaseMock, scheduler: .immediate)
-        
+
         sut.currentValueSubject.removeDuplicates()
           .sink(receiveValue: { received.append($0) }).store(in: &disposeBag)
-        
+
         sut.viewDidLoad()
-        
+
         XCTAssertEqual(expected, received, "should contain 1 item in list")
     }
 }
@@ -50,7 +50,7 @@ final class SportsListViewControllerNewViewModelTests: XCTestCase {
 class SportsListUseCaseMock: SportsListUseCaseProtocol {
     var error: DataTransferError?
     var result: [SportsListViewController.List]?
-    
+
     func execute() -> AnyPublisher<[SportsListViewController.List], Networking.DataTransferError> {
         if let error = error {
           return Fail(error: error).eraseToAnyPublisher()
@@ -66,9 +66,9 @@ class SportsListUseCaseMock: SportsListUseCaseProtocol {
 
 class SportsListViewModelMock: SportsListViewModelProtocol {
     func viewDidLoad() {}
-    
+
     let currentValueSubject: CurrentValueSubject<State<SportsListViewController.List>, Never>
-    
+
     init(state: State<SportsListViewController.List>) {
         currentValueSubject = CurrentValueSubject(state)
     }

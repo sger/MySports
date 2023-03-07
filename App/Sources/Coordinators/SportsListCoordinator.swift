@@ -12,7 +12,7 @@ final class SportsListCoordinator: BaseCoordinator {
     }
 
     override func start() {
-        let repository = SportsListRepository(dataTransferService: appDependencies.apiDataTransferService, sportsListMapper: SportsListMapper())
+        let repository = SportsListRepository(dataTransferService: appDependencies.dataTranferService, sportsListMapper: SportsListMapper())
         let useCase = SportsListUseCase(repository: repository)
         let viewModel = SportsListViewController.ViewModel(useCase: useCase)
 

@@ -24,7 +24,7 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
 
         setupViewControllerAttributes()
         setupTableView()
-        
+
         guard let scheduler = scheduler else {
             return
         }

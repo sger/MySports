@@ -4,7 +4,7 @@ import os.log
 public final class DefaultNetworkErrorLogger: NetworkErrorLogger {
 
   public init() { }
-
+  // swiftlint:disable force_unwrapping
   public func log(request: URLRequest) {
     os_log("%@ %s",
            log: Log.APIClient,
