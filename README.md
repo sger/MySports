@@ -12,10 +12,9 @@ This repository contains the source code for the **MySports** application. To ge
     $ cd MySports
     ```
 1. Bootstrap the application:
-    1. 
-        ```sh
-        make bootstrap
-        ```
+    ```sh
+    make bootstrap
+    ```
 1. Open the Xcode project `App/MySports.xcodeproj`.
 1. To run the client locally, select the `isowords` target in Xcode and run (`⌘R`).
 1. To run the linter and the tests
