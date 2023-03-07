@@ -4,7 +4,7 @@ import Networking
 import Combine
 import CombineSchedulers
 
-final class SportsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class SportsListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
 
     private var list: [SportsListViewController.List] = []
@@ -65,21 +65,25 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
         SportsListTableViewCell.register(for: tableView)
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = SportsHeaderView.loadFromNib()
-        view.configure(with: list[section], section: section)
-        view.delegate = self
-        return view
-    }
+    private func headerViewTapped(with section: Int) {
+        var indexPaths = [IndexPath]()
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        50
-    }
+        list[section].events.indices.forEach {
+            indexPaths.append(IndexPath(item: $0, section: section))
+        }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        130
-    }
+        let isExpanded = list[section].isExpanded
+        list[section].isExpanded = !isExpanded
 
+        if isExpanded {
+            tableView.deleteRows(at: indexPaths, with: .fade)
+        } else {
+            tableView.insertRows(at: indexPaths, with: .fade)
+        }
+    }
+}
+
+extension SportsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard list[section].isExpanded else {
             return 0
@@ -99,22 +103,22 @@ final class SportsListViewController: UIViewController, UITableViewDelegate, UIT
         cell.delegate = self
         return cell
     }
+}
 
-    private func headerViewTapped(with section: Int) {
-        var indexPaths = [IndexPath]()
+extension SportsListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = SportsHeaderView.loadFromNib()
+        view.configure(with: list[section], section: section)
+        view.delegate = self
+        return view
+    }
 
-        list[section].events.indices.forEach {
-            indexPaths.append(IndexPath(item: $0, section: section))
-        }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        50
+    }
 
-        let isExpanded = list[section].isExpanded
-        list[section].isExpanded = !isExpanded
-
-        if isExpanded {
-            tableView.deleteRows(at: indexPaths, with: .fade)
-        } else {
-            tableView.insertRows(at: indexPaths, with: .fade)
-        }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        130
     }
 }
 
