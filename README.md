@@ -5,14 +5,24 @@
 ```sh
 $ git clone https://github.com/sger/MySports
 $ cd MySports
+```
+
+Install swiftlint via homebrew
+
+```sh
 $ make bootstrap
+```
+
+Run linter and tests
+
+```sh
 $ make lint
 $ make test
 ```
 
 ## Architecture
 
-I opted to use a style of **MVVM-C** using apple's **Combine** framework and for the UI I'm using UIKit and storyboards/XIB files. The storyboard is using components in the format of XIB files and also **Clean Architecture**. Model-View-ViewModel is a software design pattern that is structured to separate application logic and the UI. The coordinator is responsible to pass the view model into the view controller and also to set up all the service layers.
+I opted to use a style of **MVVM-C** using apple's **Combine** framework and **Clean Architecture** and for the UI I'm using UIKit and storyboards/XIB files. The storyboard is using components in the format of XIB files. Model-View-ViewModel is a software design pattern that is structured to separate application logic and the UI. The coordinator is responsible to pass the view model into the view controller and also to set up all the service layers.
 
 - Domain models contain the data from the server.
 - Models contain the business logic for the application.
