@@ -22,9 +22,3 @@ extension NetworkError {
     }
   }
 }
-
-// public func printIfDebug(_ string: String) {
-//  #if DEBUG
-//  print(string)
-//  #endif
-// }
