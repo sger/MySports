@@ -1,28 +1,32 @@
 # MySports
 
-## Installation
+## Getting Started
 
-```sh
-$ git clone https://github.com/sger/MySports
-$ cd MySports
-```
+This repository contains the source code for the **MySports** application. To get things running:
 
-Install swiftlint via homebrew
+1. Make sure [Homebrew](https://brew.sh) is installed:
 
-```sh
-$ make bootstrap
-```
-
-Run linter and tests
-
-```sh
-$ make lint
-$ make test
-```
+1. Grab the code:
+    ```sh
+    $ git clone https://github.com/sger/MySports
+    $ cd MySports
+    ```
+1. Bootstrap the application:
+    1. 
+        ```sh
+        make bootstrap
+        ```
+1. Open the Xcode project `App/MySports.xcodeproj`.
+1. To run the client locally, select the `isowords` target in Xcode and run (`⌘R`).
+1. To run the linter and the tests
+    ```sh
+    $ make lint
+    $ make test
+    ```
 
 ## Architecture
 
-I opted to use a style of **MVVM-C** using apple's **Combine** framework and **Clean Architecture** and for the UI I'm using UIKit and storyboards/XIB files. The storyboard is using components in the format of XIB files. Model-View-ViewModel is a software design pattern that is structured to separate application logic and the UI. The coordinator is responsible to pass the view model into the view controller and also to set up all the service layers.
+I opted to use a style of **MVVM-C** using apple's **Combine** framework and **Clean Architecture** and for the UI I'm using **UIKit** and **storyboards/XIB** files. The storyboard is using components in the format of XIB files. **Model-View-ViewModel** is a software design pattern that is structured to separate application logic and the UI. The Coordinator pattern provides an encapsulation of navigation logic and also is responsible to pass the view model into the view controller and to set up all the service layers.
 
 - Domain models contain the data from the server.
 - Models contain the business logic for the application.
